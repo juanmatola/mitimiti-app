@@ -15,7 +15,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
+				.antMatchers("/user/**").hasRole("USER")
 				.antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
+				.and().formLogin().loginPage("/login").loginProcessingUrl("/auth")
+				.usernameParameter("username").passwordParameter("password")
+				.defaultSuccessUrl("/user").failureUrl("/login?error")
 				.and().csrf()
 					.disable();
 	}

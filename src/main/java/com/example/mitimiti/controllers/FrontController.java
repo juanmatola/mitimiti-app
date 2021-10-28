@@ -16,6 +16,16 @@ public class FrontController implements ErrorHandler {
 	public String index () {
 		return ViewNames.INDEX;
 	}
+	
+	@GetMapping("/login")
+	public String login () {
+		return ViewNames.LOGIN;
+	}
+	
+	@GetMapping("/singup")
+	public String singup () {
+		return ViewNames.SING_UP;
+	}
 
 	@Override
 	public String errorHandle(Exception e, ModelMap model) {
