@@ -1,0 +1,24 @@
+
+
+.pading{
+    padding: 100px 0 0 0 ;
+}
+
+.alto{
+    height: 32em;
+}
+
+footer {
+    background-color: #38618C;
+    color: azure;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    
+  }
+
+  li{
+      list-style: none;
+  }
+  
