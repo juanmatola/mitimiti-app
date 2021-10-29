@@ -37,10 +37,12 @@ public class FrontController implements ErrorHandler {
 	}
 	
 	@PostMapping("/sing-up")
-	public String singupPost(ModelMap model, @RequestParam("username") String username, @RequestParam("password") String password) {
+	public String singupPost(ModelMap model, @RequestParam("username") String username, 
+											 @RequestParam("password") String password,
+											 @RequestParam("password2") String password2){
 		
 		try {
-			usuarioService.createNewUsuario(username, password);
+			usuarioService.createNewUsuario(username, password, password2);
 		} catch (Exception e) {
 			this.errorHandle(e, model);
 		}
