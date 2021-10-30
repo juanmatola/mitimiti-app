@@ -54,6 +54,26 @@ public class UsuarioService implements UserDetailsService {
  	}
  	
  	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	public Usuario createNewUsuario(String name, String password, String password_2) throws SingUpException {
+
+ 		validate(name, password, password_2, null);
+ 		
+ 		String encryptedKey = new BCryptPasswordEncoder().encode(password);
+ 		
+ 		Usuario usuario = new Usuario();
+ 		usuario.setName(name);
+ 		usuario.setPassword(encryptedKey);
+
+		try {
+			usuarioRepository.save(usuario);
+			return usuario;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+ 	
+ 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public Usuario createNewUsuario(String name, String password, String password_2, String mail) throws SingUpException {
 
  		validate(name, password, password_2, mail);
@@ -87,9 +107,12 @@ public class UsuarioService implements UserDetailsService {
  			throw new SingUpException("passwords must be the same");
  		}
  		
- 		if(!EmailValidator.getInstance().isValid(mail)) {
- 			throw new SingUpException("invalid mail");
+ 		if(mail != null) {
+ 			if(!EmailValidator.getInstance().isValid(mail)) {
+ 	 			throw new SingUpException("invalid mail");
+ 	 		}
  		}
+ 		
  	}
 
 }

@@ -1,5 +1,7 @@
 package com.example.mitimiti.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -39,10 +41,16 @@ public class FrontController implements ErrorHandler {
 	@PostMapping("/sing-up")
 	public String singupPost(ModelMap model, @RequestParam("username") String username, 
 											 @RequestParam("password") String password,
-											 @RequestParam("password2") String password2){
+											 @RequestParam("password2") String password2,
+											 @RequestParam("mail") Optional<String> mail){
 		
 		try {
-			usuarioService.createNewUsuario(username, password, password2);
+			if(mail.isPresent()) {
+				usuarioService.createNewUsuario(username, password, password2, mail.get());
+			}else {
+				usuarioService.createNewUsuario(username, password, password2);
+			}
+			
 		} catch (Exception e) {
 			this.errorHandle(e, model);
 		}
