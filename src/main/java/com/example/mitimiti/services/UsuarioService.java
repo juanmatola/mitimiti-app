@@ -23,6 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import com.example.mitimiti.entity.Usuario;
 import com.example.mitimiti.repository.UsuarioRepository;
 import com.example.mitimiti.util.ValidationUtils;
+import com.example.mitimiti.util.exceptions.SingUpException;
  
 @Service
 public class UsuarioService implements UserDetailsService {
@@ -53,9 +54,9 @@ public class UsuarioService implements UserDetailsService {
  	}
  	
  	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public Usuario crearUsuario(String name, String password, String mail) throws Exception {
+	public Usuario createNewUsuario(String name, String password, String password_2, String mail) throws SingUpException {
 
- 		validarDatosUsuario(name, password, mail);
+ 		validate(name, password, password_2, mail);
  		
  		String encryptedKey = new BCryptPasswordEncoder().encode(password);
  		
@@ -73,17 +74,21 @@ public class UsuarioService implements UserDetailsService {
 		}
 	}
 
- 	private static void validarDatosUsuario(String name, String password, String mail) throws Exception {
+ 	private static void validate(String name, String password, String password_2, String mail) throws SingUpException {
  		if(!ValidationUtils.validateUsername(name)) {
- 			throw new Exception("invalid username");
+ 			throw new SingUpException("invalid username");
  		}
  		
  		if(!ValidationUtils.validatePassword(password)) {
- 			throw new Exception("invalid password");
+ 			throw new SingUpException("invalid password");
+ 		}
+ 		
+ 		if(!password.equals(password_2)) {
+ 			throw new SingUpException("passwords must be the same");
  		}
  		
  		if(!EmailValidator.getInstance().isValid(mail)) {
- 			throw new Exception("invalid mail");
+ 			throw new SingUpException("invalid mail");
  		}
  	}
 
