@@ -1,11 +1,8 @@
-
-
 .pading{
     padding: 100px 0 0 0 ;
 }
-
-.alto{
-    height: 32em;
+.carousel-img{
+    height: 700px;
 }
 footer {
     background-color: #38618C;
@@ -15,4 +12,3 @@ footer {
 li{
     list-style: none;
 }
-  
