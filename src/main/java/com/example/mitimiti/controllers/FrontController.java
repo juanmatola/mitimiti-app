@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.services.UsuarioService;
 import com.example.mitimiti.util.ErrorHandler;
-import com.example.mitimiti.util.exceptions.LoginException;
-import com.example.mitimiti.util.exceptions.SingUpException;
 
 @Controller
 @RequestMapping("/")
@@ -28,21 +26,11 @@ public class FrontController implements ErrorHandler {
 		return ViewNames.INDEX;
 	}
 	
-	@GetMapping("/login")
-	public String login (ModelMap... model) {
-		return ViewNames.LOGIN;
-	}
-	
-	@GetMapping("/singup")
-	public String singup (ModelMap model) {
-		return ViewNames.SING_UP;
-	}
-	
 	@PostMapping("/sing-up")
 	public String singupPost(ModelMap model, @RequestParam("username") String username, 
 											 @RequestParam("password") String password,
 											 @RequestParam("password2") String password2,
-											 @RequestParam("mail") Optional<String> mail){
+											 @RequestParam("email") Optional<String> mail){
 		
 		try {
 			if(mail.isPresent()) {
@@ -52,24 +40,19 @@ public class FrontController implements ErrorHandler {
 			}
 			
 		} catch (Exception e) {
+			System.out.println(e);
 			this.errorHandle(e, model);
 		}
 		
-		return this.login();
+		return "redirect:/?action=login";
 	}
 
 	@Override
 	public String errorHandle(Exception e, ModelMap model) {
 		
 		model.addAttribute("err", e.getMessage());
-
-		if (e instanceof SingUpException) {
-			return this.singup(model);
-		}else if(e instanceof LoginException) {
-			return this.login(model);
-		}else {			
-			return this.index(model);
-		}
 		
+		return this.index(model);
+
 	}
 }

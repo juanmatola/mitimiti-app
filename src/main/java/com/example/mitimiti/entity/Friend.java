@@ -1,55 +1,28 @@
 
 package com.example.mitimiti.entity;
 
+import com.example.mitimiti.entity.superclass.Person;
+import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Table;
 
 @Entity
-public class Friend {
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name="uuid", strategy="uuid2")
-    private String id;
-    private String name;
-    private String mail;
+@Table(name="friend")
+public class Friend extends Person implements Serializable {
     @ManyToOne
     private Usuario usuario;
 
     public Friend() {
     }
 
-    public Friend(String id, String name, String mail, Usuario usuario) {
-        this.id = id;
-        this.name = name;
-        this.mail = mail;
+    public Friend(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
+    public Friend(Usuario usuario, String id, String mail, String name) {
+        super(id, mail, name);
+        this.usuario = usuario;
     }
 
     public Usuario getUsuario() {
@@ -62,8 +35,7 @@ public class Friend {
 
     @Override
     public String toString() {
-        return "Friend{" + "id=" + id + ", name=" + name + ", mail=" + mail + ", usuario=" + usuario + '}';
+        return "Friend{" + "usuario=" + usuario + '}';
     }
-    
-    
+ 
 }

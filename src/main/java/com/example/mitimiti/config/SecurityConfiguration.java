@@ -32,9 +32,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.authorizeRequests()
 				.antMatchers("/user/**").hasRole("USER")
 				.antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
-				.and().formLogin().loginPage("/login").loginProcessingUrl("/auth")
+				.and().formLogin().loginPage("/?action=login").loginProcessingUrl("/auth")
 				.usernameParameter("username").passwordParameter("password")
-				.defaultSuccessUrl("/user").failureUrl("/login?error=error")
+				.defaultSuccessUrl("/user").failureUrl("/?error=login_error").permitAll()
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
 				.and().csrf()
 					.disable();
 	}
