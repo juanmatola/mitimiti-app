@@ -85,8 +85,8 @@
     </div>
 
   </div>
-  <div>
-    <table>
+  <div class="container">
+    <table class="table">
 
       <thead>
         <tr>
@@ -100,12 +100,12 @@
       <tbody th:each="amigo : ${amigos}">
 
         <tr>
-          <th th:text="${amigo.nombre}"></th>
+          <th th:text="${amigo.name}"></th>
           <td th:text="${amigo.mail}"></td>
           
           <td>
-            <a th:href="@{/user/alta/__${autor.id}__}"><i class="fa fa-arrow-up"></i></a>
-            <a th:href="@{/user/baja/__${autor.id}__}"><i class="fa fa-ban"></i></a>
+            <a th:href="@{/user/alta/}"><i class="fa fa-arrow-up"></i></a>
+            <a th:href="@{/user/baja/}"><i class="fa fa-ban"></i></a>
           </td>
         </tr>
       </tbody>
