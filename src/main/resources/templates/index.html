@@ -19,11 +19,11 @@
 
 			<div>
 
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegistro">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalInicio">
 					INICIAR SESION
 				</button>
 
-				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalInicio">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegistro">
 					REGISTRARTE
 				</button>
 
@@ -225,7 +225,7 @@
 	<!-- Footer -->
 
 
-	<div class="modal fade" id="ModalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="ModalInicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -236,14 +236,14 @@
 
 				<div class="modal-body">
 
-					<form class="row g-3" id="FormularioRegistro" accion="/auth" method="POST">
+					<form class="row g-3" id="FormularioInicio" action="/auth" method="POST">
 
 						<div class="col-md-4">
 							<label for="validationName" class="form-label">Nombre</label>
-							<input type="text" class="form-control" name="Nombre"></input>
+							<input type="text" class="form-control" name="username"></input>
 
-							<label for="validationName" class="form-label">Mail</label>
-							<input type="email" class="form-control" name="Nombre"></input>
+							<label for="validationName" class="form-label">Contraseña</label>
+							<input type="password" class="form-control" name="password"></input>
 						</div>
 
 					</form>
@@ -252,7 +252,7 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-primary" form="FormularioRegistro">Registrar</button>
+					<button type="submit" class="btn btn-primary" form="FormularioInicio">Iniciar Secion</button>
 				</div>
 
 
@@ -260,7 +260,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="ModalInicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="ModalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -271,7 +271,7 @@
 
 				<div class="modal-body">
 
-					<form class="row g-3" id="FormularioInicio" accion="/sing-up" method="POST">
+					<form class="row g-3" id="FormularioRegistro" action="/sing-up" method="POST">
 
 							<div class="col-md-4">
 								<label for="validationName" class="form-label">Nombre de usuario</label>
