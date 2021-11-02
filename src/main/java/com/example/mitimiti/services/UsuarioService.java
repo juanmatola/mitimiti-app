@@ -2,6 +2,7 @@ package com.example.mitimiti.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -34,11 +35,7 @@ public class UsuarioService implements UserDetailsService {
  	@Override
  	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
 
- 		Usuario usuario = usuarioRepository.getUserByName(name);
-
- 		if (usuario == null) {
-            throw new UsernameNotFoundException("Could not find user");
-        }
+ 		Usuario usuario = this.findByName(name);
 
  		List<GrantedAuthority> permisos = new ArrayList<>();
 
@@ -114,6 +111,18 @@ public class UsuarioService implements UserDetailsService {
  	 			throw new SingUpException("Invalid email");
  	 		}
  		}
+ 		
+ 	}
+ 	
+ 	private Usuario findByName(String name) {
+ 		
+ 		Optional<Usuario> req = usuarioRepository.findByName(name);
+ 		
+ 		if (req.isPresent()) {
+			return req.get();
+		}else {
+			throw new UsernameNotFoundException("No existe usuario con dicho nombre");
+		}
  		
  	}
 
