@@ -1,7 +1,6 @@
 package com.example.mitimiti.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,8 +20,6 @@ import com.example.mitimiti.services.FriendService;
 @Controller
 @RequestMapping("/user")
 public class AppController {
-	
-	
 	
 	@Autowired
 	private FriendService friendService;
