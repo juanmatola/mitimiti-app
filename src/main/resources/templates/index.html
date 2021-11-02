@@ -135,14 +135,20 @@ adgagsddagdagdagadgadg
 
         <div class="modal-body">
 
-          <form class="row g-3" id="FormularioRegistro" accion="/sing-up" method="POST">
+          <form class="row g-3" id="FormularioRegistro" action="/sing-up" method="post">
 
             <div class="col-md-4">
-              <label for="validationName" class="form-label">Nombre</label>
-              <input type="text" class="form-control" name="Nombre"></input>
+              	<label for="validationName" class="form-label">Nombre de usuario</label>
+              	<input type="text" class="form-control" name="username"></input>
+              
+            	<label for="validationName" class="form-label">Email</label>
+	            <input type="email" class="form-control" name="email"></input>
+	            
+	            <label for="validationName" class="form-label">Contraseña</label>
+	            <input type="password" class="form-control" name="password"></input>
 
-              <label for="validationName" class="form-label">Mail</label>
-              <input type="email" class="form-control" name="Nombre"></input>
+	            <label for="validationName" class="form-label">Repite la contraseña</label>
+	            <input type="password" class="form-control" name="password2"></input>
             </div>
 
           </form>
