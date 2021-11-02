@@ -69,7 +69,8 @@ public class UsuarioService implements UserDetailsService {
 			return usuario;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			System.out.println(e.getMessage());
+			throw new SingUpException("Hubo un error al crear el nuevo usuario, intente de nuevo más tarde");
 		}
 	}
  	
@@ -90,26 +91,27 @@ public class UsuarioService implements UserDetailsService {
 			return usuario;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			System.out.println(e.getMessage());
+			throw new SingUpException("Hubo un error al crear el nuevo usuario, intente de nuevo más tarde");
 		}
 	}
 
  	private static void validate(String name, String password, String password_2, String mail) throws SingUpException {
  		if(!ValidationUtils.validateUsername(name)) {
- 			throw new SingUpException("invalid username");
+ 			throw new SingUpException("Invalid username");
  		}
  		
  		if(!ValidationUtils.validatePassword(password)) {
- 			throw new SingUpException("invalid password");
+ 			throw new SingUpException("Invalid password");
  		}
  		
  		if(!password.equals(password_2)) {
- 			throw new SingUpException("passwords must be the same");
+ 			throw new SingUpException("Passwords must be the same");
  		}
  		
  		if(mail != null) {
  			if(!EmailValidator.getInstance().isValid(mail)) {
- 	 			throw new SingUpException("invalid mail");
+ 	 			throw new SingUpException("Invalid email");
  	 		}
  		}
  		
