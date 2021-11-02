@@ -33,12 +33,7 @@ public class FrontController implements ErrorHandler {
 											 @RequestParam("email") Optional<String> mail){
 		
 		try {
-			if(mail.isPresent()) {
-				usuarioService.createNewUsuario(username, password, password2, mail.get());
-			}else {
-				usuarioService.createNewUsuario(username, password, password2);
-			}
-			
+			usuarioService.createNewUsuario(username, password, password2, mail);
 		} catch (Exception e) {
 			System.out.println(e);
 			this.errorHandle(e, model);

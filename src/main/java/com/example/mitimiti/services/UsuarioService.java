@@ -51,37 +51,16 @@ public class UsuarioService implements UserDetailsService {
  	}
  	
  	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public Usuario createNewUsuario(String name, String password, String password_2) throws SingUpException {
+	public Usuario createNewUsuario(String name, String password, String password_2, Optional<String> mail) throws SingUpException {
 
- 		validate(name, password, password_2, null);
+ 		validate(name, password, password_2, mail.orElse(null));
  		
  		String encryptedKey = new BCryptPasswordEncoder().encode(password);
  		
  		Usuario usuario = new Usuario();
  		usuario.setName(name);
  		usuario.setPassword(encryptedKey);
-
-		try {
-			usuarioRepository.save(usuario);
-			return usuario;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(e.getMessage());
-			throw new SingUpException("Hubo un error al crear el nuevo usuario, intente de nuevo más tarde");
-		}
-	}
- 	
- 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public Usuario createNewUsuario(String name, String password, String password_2, String mail) throws SingUpException {
-
- 		validate(name, password, password_2, mail);
- 		
- 		String encryptedKey = new BCryptPasswordEncoder().encode(password);
- 		
- 		Usuario usuario = new Usuario();
- 		usuario.setName(name);
- 		usuario.setPassword(encryptedKey);
- 		usuario.setMail(mail);
+ 		if(mail.isPresent()) usuario.setMail(mail.get());
 
 		try {
 			usuarioRepository.save(usuario);
