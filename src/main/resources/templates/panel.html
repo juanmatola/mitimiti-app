@@ -69,6 +69,9 @@
           <h5 class="card-title">CREAR AMIGO</h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
             content. This content is a little bit longer.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAmigo">
+              AÑADIR AMIGO
+            </button>
         </div>
       </div>
     </div>
@@ -122,6 +125,41 @@
 
   </footer>
   <!-- Footer -->
+  
+   <div class="modal fade" id="ModalAmigo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body">
+
+					<form class="row g-3" id="FormularioAmigo" action="/user/friends/create" method="POST">
+
+						<div class="col-md-4">
+							<label for="validationName" class="form-label">Nombre</label>
+							<input type="text" class="form-control" name="name"></input>
+
+							<label for="validationName" class="form-label">Mail</label>
+							<input type="email" class="form-control" name="mail"></input>
+						</div>
+
+					</form>
+
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					<button type="submit" class="btn btn-primary" form="FormularioAmigo">Añadir</button>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
