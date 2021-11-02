@@ -44,7 +44,7 @@ public class FrontController implements ErrorHandler {
 			this.errorHandle(e, model);
 		}
 		
-		return this.index(model);
+		return "redirect:/?action=login";
 	}
 
 	@Override
