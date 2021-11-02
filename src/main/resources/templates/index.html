@@ -20,11 +20,11 @@
 			<div>
 
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalRegistro">
-					REGISTRARTE
+					INICIAR SESION
 				</button>
 
 				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalInicio">
-					INICIAR SESION
+					REGISTRARTE
 				</button>
 
 			</div>
@@ -230,13 +230,13 @@
 			<div class="modal-content">
 
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Registrate</h5>
+					<h5 class="modal-title" id="exampleModalLabel">INICIAR SESION</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 
 				<div class="modal-body">
 
-					<form class="row g-3" id="FormularioRegistro" accion="/sing-up" method="POST">
+					<form class="row g-3" id="FormularioRegistro" accion="/auth" method="POST">
 
 						<div class="col-md-4">
 							<label for="validationName" class="form-label">Nombre</label>
@@ -265,23 +265,13 @@
 			<div class="modal-content">
 
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+					<h5 class="modal-title" id="exampleModalLabel">REGISTRARTE</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 
 				<div class="modal-body">
 
-					<form class="row g-3" id="FormularioInicio" accion="/auth" method="POST">
-
-						<div class="col-md-4">
-							<label for="validationName" class="form-label">Mail</label>
-							<input type="email" class="form-control" name="Nombre"></input>
-
-							<label for="validationName" class="form-label">Contraseña</label>
-							<input type="password" class="form-control" name="Nombre"></input>
-						</div>
-
-						<form class="row g-3" id="FormularioRegistro" action="/sing-up" method="post">
+					<form class="row g-3" id="FormularioInicio" accion="/sing-up" method="POST">
 
 							<div class="col-md-4">
 								<label for="validationName" class="form-label">Nombre de usuario</label>
@@ -296,56 +286,15 @@
 								<label for="validationName" class="form-label">Repite la contraseña</label>
 								<input type="password" class="form-control" name="password2"></input>
 							</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-		<button type="submit" class="btn btn-primary" form="FormularioRegistro">Registrar</button>
-	</div>
-
-
-	</div>
-	</div>
-	</div>
-
-	<div class="modal fade" id="ModalInicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-
-				<div class="modal-body">
-
-					<form class="row g-3" id="FormularioInicio" action="/auth" method="POST">
-
-						<div class="col-md-4">
-							<label for="validationName" class="form-label">Nombre usuario</label>
-							<input type="text" class="form-control" name="username"></input>
-
-							<label for="validationName" class="form-label">Contraseña</label>
-							<input type="password" class="form-control" name="password"></input>
-						</div>
-
 					</form>
-
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+						<button type="submit" class="btn btn-primary" form="FormularioRegistro">Registrar</button>
+					</div>
 				</div>
-
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-primary" form="FormularioInicio">Iniciar</button>
-				</div>
-
-
 			</div>
 		</div>
 	</div>
-
 
 
 
