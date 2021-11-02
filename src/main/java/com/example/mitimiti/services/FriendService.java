@@ -17,12 +17,12 @@ public class FriendService {
 	private FriendRepository friendRepository;
 	
 	public void createNewFriend(String mail, 
-								String nombre, 
+								String name, 
 								Usuario usuario) throws Exception{
 	
 		Friend friend = new Friend();
 		friend.setMail(mail);
-		friend.setName(nombre);
+		friend.setName(name);
 		friend.setUsuario(usuario);
 		
 		try {
