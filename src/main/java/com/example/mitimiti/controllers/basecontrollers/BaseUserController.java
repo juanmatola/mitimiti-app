@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Usuario;
 
 public abstract class BaseUserController {
 	

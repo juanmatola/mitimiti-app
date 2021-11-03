@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.services.FriendService;
 
 @Controller

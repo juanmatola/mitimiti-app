@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.mitimiti.entity.Friend;
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Friend;
+import com.example.mitimiti.entities.Usuario;
 
 @Repository
 public interface FriendRepository extends JpaRepository<Friend, String>{

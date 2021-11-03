@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
-import com.example.mitimiti.entity.Friend;
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Friend;
+import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.services.FriendService;
 
 @Controller

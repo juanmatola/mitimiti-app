@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mitimiti.entity.Friend;
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Friend;
+import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.repository.FriendRepository;
 
 @Service

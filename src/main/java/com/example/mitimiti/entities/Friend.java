@@ -1,10 +1,11 @@
 
-package com.example.mitimiti.entity;
+package com.example.mitimiti.entities;
 
-import com.example.mitimiti.entity.superclass.Person;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.example.mitimiti.entities.superclass.Person;
 
 @Entity
 @Table(name="friend")
