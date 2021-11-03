@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mitimiti.config.ViewNames;
+import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.services.UsuarioService;
-import com.example.mitimiti.util.ErrorHandler;
 
 @Controller
 @RequestMapping("/")
-public class FrontController implements ErrorHandler {
+public class FrontController extends BaseUserController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -38,21 +38,17 @@ public class FrontController implements ErrorHandler {
 			}else {
 				usuarioService.createNewUsuario(username, password, password2);
 			}
-			
 		} catch (Exception e) {
-			System.out.println(e);
-			this.errorHandle(e, model);
+			this.errorHandle(e);
 		}
 		
-		return "redirect:/?action=login";
+		return super.REDIRECT_TO_LOGIN;
 	}
 
 	@Override
-	public String errorHandle(Exception e, ModelMap model) {
+	public String errorHandle(Exception e) {
 		
-		model.addAttribute("err", e.getMessage());
-		
-		return this.index(model);
+		return "/?err=".concat(e.getMessage());
 
 	}
 }

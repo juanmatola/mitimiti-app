@@ -2,7 +2,6 @@ package com.example.mitimiti.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +18,7 @@ public class FriendsController extends BaseUserController {
 	
 	@Autowired
 	private FriendService friendService;
-	
-	private final String REDIRECT_TO_PANEL = "redirect:/user";
-	private final String REDIRECT_TO_LOGIN = "redirect:/".concat(super.loginPath);
+		
 	
 	@PostMapping("/create")
 	public String createNewFriend(	@RequestParam("name") String name,
@@ -34,7 +31,7 @@ public class FriendsController extends BaseUserController {
 			friendService.createNewFriend(mail, name, usuario);
 						
 		} catch (Exception e) {
-			return this.REDIRECT_TO_LOGIN;
+			return super.REDIRECT_TO_LOGIN;
 		}
 		
 		return this.REDIRECT_TO_PANEL;
@@ -52,7 +49,7 @@ public class FriendsController extends BaseUserController {
 		
 			System.err.println(e.getMessage());
 			
-			this.errorHandle(e, null);
+			this.errorHandle(e);
 			
 		}
 		
@@ -60,7 +57,7 @@ public class FriendsController extends BaseUserController {
 	}
 	
 	@Override
-	public String errorHandle(Exception e, ModelMap model) {
+	public String errorHandle(Exception e) {
 		
 		return this.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
 
