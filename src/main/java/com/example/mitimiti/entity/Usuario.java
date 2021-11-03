@@ -2,13 +2,12 @@
 package com.example.mitimiti.entity;
 
 import com.example.mitimiti.entity.superclass.Person;
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="usuario")
-public class Usuario extends Person implements Serializable{
+public class Usuario extends Person{
     private String password;
 
     public Usuario() {
