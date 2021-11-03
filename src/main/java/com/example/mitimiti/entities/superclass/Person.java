@@ -1,7 +1,6 @@
 
-package com.example.mitimiti.entity.superclass;
+package com.example.mitimiti.entities.superclass;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +11,14 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Person implements Serializable {
+public abstract class Person{
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name="uuid", strategy="uuid2")
     protected String id;
-    @Column(name="Mail")
+    @Column(name="mail")
     protected String mail;
-    @Column(name="Name")
+    @Column(name="name")
     protected String name;
 
     public Person() {

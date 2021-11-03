@@ -1,9 +1,10 @@
 
 package com.example.mitimiti.util.classes;
 
-import com.example.mitimiti.entity.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.example.mitimiti.entities.Usuario;
 
 public class Event {
     private Date date;

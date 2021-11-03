@@ -1,15 +1,15 @@
 
-package com.example.mitimiti.entity;
+package com.example.mitimiti.entities;
 
-import com.example.mitimiti.entity.superclass.Person;
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.example.mitimiti.entities.superclass.Person;
+
 @Entity
 @Table(name="friend")
-public class Friend extends Person implements Serializable {
+public class Friend extends Person {
     @ManyToOne
     private Usuario usuario;
 

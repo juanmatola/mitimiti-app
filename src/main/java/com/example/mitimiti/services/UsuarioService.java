@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.repository.UsuarioRepository;
 import com.example.mitimiti.util.ValidationUtils;
 import com.example.mitimiti.util.exceptions.SingUpException;
