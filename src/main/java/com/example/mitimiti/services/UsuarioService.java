@@ -52,8 +52,8 @@ public class UsuarioService implements UserDetailsService {
  	
  	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public Usuario createNewUsuario(String name, String password, String password_2, Optional<String> mail) throws SingUpException {
-
- 		validate(name, password, password_2, mail.orElse(null));
+ 		
+ 		validate(name, password, password_2, mail.get().equals("") ? null : mail.get());
  		
  		String encryptedKey = new BCryptPasswordEncoder().encode(password);
  		
