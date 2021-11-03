@@ -71,6 +71,38 @@ public class UsuarioService implements UserDetailsService {
 			throw new SingUpException("Hubo un error al crear el nuevo usuario, intente de nuevo más tarde");
 		}
 	}
+ 	
+ 	public void deleteUsuarioById(String id) throws Exception{
+		
+		try {			
+			usuarioRepository.deleteById(id);	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new Exception("Id usuario incorrecto");	
+		}
+		
+	}
+
+ 	public void changePassword(String currentPassword, String newPassword, String newPassword_2) throws Exception{
+		
+ 		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+ 		HttpSession session = attr.getRequest().getSession(false);
+ 		
+ 		if(session == null) throw new Exception("Sesión expirada, inicie sesión nuevamente");
+ 		if(!newPassword.equals(newPassword_2)) throw new Exception("Las contraseñas no coinciden");
+ 		if(!ValidationUtils.validatePassword(newPassword)) {
+ 			throw new SingUpException("Invalid password");
+ 		}
+ 		
+ 		Usuario usuario = (Usuario) session.getAttribute("clientesession");
+ 		
+ 		if(!new BCryptPasswordEncoder().matches(currentPassword, usuario.getPassword())) {
+ 			throw new Exception("Contraseña actual incorrecta");
+ 		}
+		
+ 		usuario.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+ 		usuarioRepository.save(usuario);
+	}
 
  	private static void validate(String name, String password, String password_2, String mail) throws SingUpException {
  		if(!ValidationUtils.validateUsername(name)) {
