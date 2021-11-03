@@ -92,6 +92,9 @@
 
   </div>
   <div class="container">
+  
+  	<h2>Tus amigos:</h2>
+  
     <table class="table">
 
       <thead>
@@ -110,8 +113,8 @@
           <td th:text="${amigo.mail}"></td>
           
           <td>
-            <a th:href="@{/user/alta/}"><i class="fa fa-arrow-up"></i></a>
-            <a th:href="@{/user/baja/}"><i class="fa fa-ban"></i></a>
+            <a th:href="@{/user/friends/update/{id}(id=${amigo.id})}">editar</a>
+            <a th:href="@{/user/friends/delete/{id}(id=${amigo.id})}">eliminar</a>
           </td>
         </tr>
       </tbody>
