@@ -18,6 +18,7 @@ public class FriendsController extends BaseUserController {
 	
 	@Autowired
 	private FriendService friendService;
+		
 	
 	@PostMapping("/create")
 	public String createNewFriend(	@RequestParam("name") String name,
@@ -30,10 +31,10 @@ public class FriendsController extends BaseUserController {
 			friendService.createNewFriend(mail, name, usuario);
 						
 		} catch (Exception e) {
-			return "redirect:/".concat(loginPath);
+			return super.REDIRECT_TO_LOGIN;
 		}
 		
-		return "redirect:/user";
+		return this.REDIRECT_TO_PANEL;
 		
 	}
 	
@@ -48,9 +49,18 @@ public class FriendsController extends BaseUserController {
 		
 			System.err.println(e.getMessage());
 			
+			this.errorHandle(e);
+			
 		}
 		
-		return "redirect:/user";
+		return this.REDIRECT_TO_PANEL;
+	}
+	
+	@Override
+	public String errorHandle(Exception e) {
+		
+		return this.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
+
 	}
 	
 }

@@ -17,11 +17,10 @@ import com.example.mitimiti.services.FriendService;
 
 @Controller
 @RequestMapping("/user")
-public class AppController extends BaseUserController{
+public class PanelController extends BaseUserController{
 	
 	@Autowired
 	private FriendService friendService;
-	
 	
 	@GetMapping()
 	public String index (ModelMap model) {
@@ -35,10 +34,19 @@ public class AppController extends BaseUserController{
 			model.addAttribute("amigos", amigos);
 			
 		} catch (Exception e) {
-			return "redirect:/".concat(loginPath);
+			return this.errorHandle(e);
 		}
 		
 		return ViewNames.PANEL;
 	}
+
+
+	@Override
+	public String errorHandle(Exception e) {
+		
+		return super.REDIRECT_TO_LOGIN;
+		
+	}
+
 	
 }

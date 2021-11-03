@@ -6,10 +6,12 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.example.mitimiti.entities.Usuario;
+import com.example.mitimiti.util.ErrorHandler;
 
-public abstract class BaseUserController {
+public abstract class BaseUserController implements ErrorHandler{
 	
-	protected String loginPath = "?action=login";
+	protected final String REDIRECT_TO_LOGIN = "redirect:/?action=login";
+	protected final String REDIRECT_TO_PANEL = "redirect:/user";
 	
 	protected Usuario obtainLoggedUser() throws Exception {
 		
