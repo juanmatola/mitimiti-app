@@ -16,9 +16,9 @@ public abstract class Person{
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name="uuid", strategy="uuid2")
     protected String id;
-    @Column(name="Mail")
+    @Column(name="mail")
     protected String mail;
-    @Column(name="Name")
+    @Column(name="name")
     protected String name;
 
     public Person() {
