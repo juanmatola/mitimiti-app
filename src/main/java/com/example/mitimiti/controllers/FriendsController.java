@@ -45,15 +45,14 @@ public class FriendsController extends BaseUserController {
 			
 			friendService.deletFriendById(id);
 			
+			
 		} catch (Exception e) {
 		
-			System.err.println(e.getMessage());
-			
-			this.errorHandle(e);
-			
+			return this.errorHandle(e);			
 		}
 		
 		return this.REDIRECT_TO_PANEL;
+		
 	}
 	
 	@Override

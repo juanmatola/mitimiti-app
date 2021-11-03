@@ -52,7 +52,6 @@ public class FriendService {
 		try {			
 			friendRepository.deleteById(id);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			throw new Exception("Id incorrecto");	
 		}
 		
