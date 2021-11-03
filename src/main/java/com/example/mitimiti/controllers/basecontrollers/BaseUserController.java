@@ -6,8 +6,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.example.mitimiti.entities.Usuario;
+import com.example.mitimiti.util.ErrorHandler;
 
-public abstract class BaseUserController {
+public abstract class BaseUserController implements ErrorHandler{
 	
 	protected String loginPath = "?action=login";
 	

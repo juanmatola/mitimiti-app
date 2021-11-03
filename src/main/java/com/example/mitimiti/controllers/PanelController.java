@@ -17,7 +17,7 @@ import com.example.mitimiti.services.FriendService;
 
 @Controller
 @RequestMapping("/user")
-public class AppController extends BaseUserController{
+public class PanelController extends BaseUserController{
 	
 	@Autowired
 	private FriendService friendService;
@@ -40,5 +40,16 @@ public class AppController extends BaseUserController{
 		
 		return ViewNames.PANEL;
 	}
+
+
+	@Override
+	public String errorHandle(Exception e, ModelMap model) {
+		
+		model.addAttribute("err", e.getMessage());
+		
+		return this.index(model);
+
+	}
+
 	
 }
