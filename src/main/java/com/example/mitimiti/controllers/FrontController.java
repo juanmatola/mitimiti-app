@@ -33,11 +33,9 @@ public class FrontController extends BaseUserController {
 											 @RequestParam("email") Optional<String> mail){
 		
 		try {
-			if(mail.isPresent()) {
-				usuarioService.createNewUsuario(username, password, password2, mail.get());
-			}else {
-				usuarioService.createNewUsuario(username, password, password2);
-			}
+
+			usuarioService.createNewUsuario(username, password, password2, mail);
+
 		} catch (Exception e) {
 			this.errorHandle(e);
 		}

@@ -51,15 +51,16 @@ public class UsuarioService implements UserDetailsService {
  	}
  	
  	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public Usuario createNewUsuario(String name, String password, String password_2) throws SingUpException {
+	public Usuario createNewUsuario(String name, String password, String password_2, Optional<String> mail) throws SingUpException {
 
- 		validate(name, password, password_2, null);
+ 		validate(name, password, password_2, mail.orElse(null));
  		
  		String encryptedKey = new BCryptPasswordEncoder().encode(password);
  		
  		Usuario usuario = new Usuario();
  		usuario.setName(name);
  		usuario.setPassword(encryptedKey);
+ 		if(mail.isPresent()) usuario.setMail(mail.get());
 
 		try {
 			usuarioRepository.save(usuario);
@@ -71,26 +72,36 @@ public class UsuarioService implements UserDetailsService {
 		}
 	}
  	
- 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
-	public Usuario createNewUsuario(String name, String password, String password_2, String mail) throws SingUpException {
-
- 		validate(name, password, password_2, mail);
- 		
- 		String encryptedKey = new BCryptPasswordEncoder().encode(password);
- 		
- 		Usuario usuario = new Usuario();
- 		usuario.setName(name);
- 		usuario.setPassword(encryptedKey);
- 		usuario.setMail(mail);
-
-		try {
-			usuarioRepository.save(usuario);
-			return usuario;
+ 	public void deleteUsuarioById(String id) throws Exception{
+		
+		try {			
+			usuarioRepository.deleteById(id);	
 		} catch (Exception e) {
-			e.printStackTrace();
 			System.out.println(e.getMessage());
-			throw new SingUpException("Hubo un error al crear el nuevo usuario, intente de nuevo más tarde");
+			throw new Exception("Id usuario incorrecto");	
 		}
+		
+	}
+
+ 	public void changePassword(String currentPassword, String newPassword, String newPassword_2) throws Exception{
+		
+ 		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+ 		HttpSession session = attr.getRequest().getSession(false);
+ 		
+ 		if(session == null) throw new Exception("Sesión expirada, inicie sesión nuevamente");
+ 		if(!newPassword.equals(newPassword_2)) throw new Exception("Las contraseñas no coinciden");
+ 		if(!ValidationUtils.validatePassword(newPassword)) {
+ 			throw new SingUpException("Invalid password");
+ 		}
+ 		
+ 		Usuario usuario = (Usuario) session.getAttribute("clientesession");
+ 		
+ 		if(!new BCryptPasswordEncoder().matches(currentPassword, usuario.getPassword())) {
+ 			throw new Exception("Contraseña actual incorrecta");
+ 		}
+		
+ 		usuario.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+ 		usuarioRepository.save(usuario);
 	}
 
  	private static void validate(String name, String password, String password_2, String mail) throws SingUpException {
