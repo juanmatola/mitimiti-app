@@ -8,6 +8,8 @@
     <title>nav</title>
 </head>
 <body>
+  
+  <!-- menu-->
   <nav class="navbar navbar-light bg-light fixed-top " id="culor" th:fragment="menu">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="/Logo.png" alt="" width="80" height="80" class="d-inline-block align-text-top"></a>
@@ -49,6 +51,45 @@
       </div>
     </div>
   </nav>
+
+  <!--lista amigos-->
+  <div class="container" th:fragment="listaAmigos">
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th> NOMBRE </th>
+          <th> MAIL </th>
+          <th> EDITAR / ELIMINAR </th>
+        </tr>
+
+      </thead>
+
+      <tbody th:each="amigo : ${amigos}">
+
+        <tr>
+          <th th:text="${amigo.name}"></th>
+          <td th:text="${amigo.mail}"></td>
+          
+          <td>
+            <a th:href="@{/user/alta/}"><i class="fa fa-arrow-up"></i></a>
+            <a th:href="@{/user/baja/}"><i class="fa fa-ban"></i></a>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <!--footer-->
+  <footer class="page-footer font-small blue" th:fragment="pie">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright: Miti/Miti - GRUPO 3
+    </div>
+    <!-- Copyright -->
+
+  </footer>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 crossorigin="anonymous"></script>
