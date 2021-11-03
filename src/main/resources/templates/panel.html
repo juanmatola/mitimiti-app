@@ -189,20 +189,12 @@
 							<input type="text" class="form-control" name="name"></input>
 						</div>
 
-
-						<table>
-							<thead>
-								<tr>
-									<th> NOMBRE </th>
-								</tr>
-							</thead>
-							<tbody th:each="editorial : ${listaeditorial}">
-								<tr>
-									<td th:text="${editorial.nombre}"></td>
-									<input type="checkbox" class="form-control" name="amigo"></input>
-								</tr>
-							</tbody>
-						</table>
+						<ul class="list-group">
+							<li class="list-group-item"  th:each="Amigo : ${amigos}">
+								<input class="form-check-input me-1" type="checkbox" th:value="${Amigo.id}" aria-label="...">
+								<span th:text="${Amigo.name}"></span>
+							</li>
+						</ul>
 
 
 					</form>
