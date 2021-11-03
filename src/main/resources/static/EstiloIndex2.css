@@ -1,0 +1,82 @@
+.pading{
+    padding: 120px 0 0 10px ;
+    margin: 0 0 0 10px;
+}
+.carta{
+    padding: 120px;
+    margin: 100px;
+}
+.carousel-img{
+    height: 700px;
+}
+.imgtar{
+    width: 100px!important;
+    padding-top: 25px;
+    align-self: center;
+}
+footer {
+    background-color: #38618C;
+    color: azure;
+    width: 100%;
+}
+li{
+    list-style: none;
+}
+.cerrar:hover{
+    color: black !important;
+}
+a{
+    color: black !important;
+}
+a:hover{
+    text-decoration: underline ;
+}
+
+.section-header {
+    text-align: center;
+    margin: 40px 0px 80px;
+}
+.section-header h3 {
+    font-size: 22px;
+    color: #2196f3;
+    text-transform: uppercase;
+}
+.section-header h2 {
+    font-size: 32px;
+    color: #292929;
+    position: relative;
+}
+.section-header h2:after {
+    content: "";
+    height: 3px;
+    max-width: 100%;
+    width: 120px;
+    background: #2196f3;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0px;
+    margin: 0 auto;
+}
+.faq-section .accordion-collapse {
+    border: 0;
+}
+.faq-section .accordion-button {
+    padding: 15px 0px 15px;
+    font-weight: bold;
+    border: 0;
+    font-size: 18px;
+    color: #333333;
+    text-align: left;
+    border-bottom: 1px solid #ddd; 
+}
+.faq-section .accordion-button:focus {
+    box-shadow: none;
+}
+.faq-section .accordion-button:not(.collapsed) {
+    background: none;
+    color: #1b6ce5;
+}
+.faq-section .accordion-body {
+    padding: 15px 0px 15px;
+}
