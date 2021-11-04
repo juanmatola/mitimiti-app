@@ -37,7 +37,7 @@ public class FrontController extends BaseUserController {
 			usuarioService.createNewUsuario(username, password, password2, mail);
 
 		} catch (Exception e) {
-			this.errorHandle(e);
+			return this.errorHandle(e);
 		}
 		
 		return super.REDIRECT_TO_LOGIN;
