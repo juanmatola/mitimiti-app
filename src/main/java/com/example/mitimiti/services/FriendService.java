@@ -76,4 +76,10 @@ public class FriendService {
 		
 	}
 	
+	public List<Friend> getFriendsByIdList (List<String> friendIDs) throws Exception{
+		
+		return friendRepository.findAllById(friendIDs);
+		
+	}
+	
 }

@@ -1,6 +1,5 @@
 package com.example.mitimiti.entities.temporals;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -73,6 +72,4 @@ public class Expense {
 		this.consumers = consumers;
 	}
     
-    
-
 }

@@ -1,7 +1,6 @@
 
 package com.example.mitimiti.entities.temporals;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -96,8 +95,5 @@ public class Event {
 	public void setParticipants(List<Participant> participants) {
 		this.participants = participants;
 	}
-
-    
-   
     
 }
