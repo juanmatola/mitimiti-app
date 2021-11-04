@@ -24,13 +24,20 @@ public class EventController extends BaseUserController {
 			System.out.println(id);
 		}
 		
+		try {
+			
+		} catch (Exception e) {
+			return this.errorHandle(e);
+		}
+		
 		return "redirect:/user";
 	}
 
 	@Override
 	public String errorHandle(Exception e) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return super.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
+		
 	}
 	
 }
