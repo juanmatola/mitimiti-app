@@ -1,22 +1,22 @@
 
 package com.example.mitimiti.util.classes;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.example.mitimiti.entities.Usuario;
 
 public class Event {
     private Date date;
     private String name;
-    private ArrayList<Participant> participants;
+    private List<Participant> participants;
     private Usuario usuario;
     private Double totalCost;
 
     public Event() {
     }
 
-    public Event(Date date, String nameEvent, ArrayList<Participant> participant, Usuario usuario, Double totalCost) {
+    public Event(Date date, String nameEvent, List<Participant> participant, Usuario usuario, Double totalCost) {
         this.date = date;
         this.name = nameEvent;
         this.participants = participant;
@@ -40,11 +40,11 @@ public class Event {
         this.name = nameEvent;
     }
 
-    public ArrayList<Participant> getParticipants() {
+    public List<Participant> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(ArrayList<Participant> participant) {
+    public void setParticipants(List<Participant> participant) {
         this.participants = participant;
     }
 
