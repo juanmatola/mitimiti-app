@@ -1,102 +1,86 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="EstiloIndex2.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>nav</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="EstiloIndex2.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title>nav</title>
 </head>
+
 <body>
-  
-  <!-- menu-->
-  <nav class="navbar navbar-light bg-light fixed-top " id="culor" th:fragment="menu">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/Logo.png" alt="" width="80" height="80" class="d-inline-block align-text-top"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end navbar-light bg-light" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-dark bg-light justify-content-end flex-grow-1 pe-3">
-            
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" $font-size-base: 10rem;>PERFIL</a>
-            </li>
 
-            <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Amigos
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-                <li><a class="dropdown-item" href="#">Agregar</a></li>
-                <li><a class="dropdown-item" href="#">Editar</a></li> 
-                <li><a class="dropdown-item" href="#">Listar</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Eliminar</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Nuevo evento</a>
-            </li>
-          </ul>
-          
-        </div>
-      </div>
-    </div>
-  </nav>
+	<!-- menu-->
+	<nav class="navbar navbar-light bg-light fixed-top " id="culor" th:fragment="menu">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#"><img src="/Logo.png" alt="" width="80" height="80"
+					class="d-inline-block align-text-top"></a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+				aria-controls="offcanvasNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="offcanvas offcanvas-end navbar-light bg-light" tabindex="-1" id="offcanvasNavbar"
+				aria-labelledby="offcanvasNavbarLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul class="navbar-dark bg-light justify-content-end flex-grow-1 pe-3">
 
-  <!--lista amigos-->
-  <div class="container" th:fragment="listaAmigos">
-    <table class="table">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#" $font-size-base: 10rem;>PERFIL</a>
+						</li>
 
-      <thead>
-        <tr>
-          <th> NOMBRE </th>
-          <th> MAIL </th>
-          <th> EDITAR / ELIMINAR </th>
-        </tr>
+						<li class="nav-item dropdown ">
+							<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								Amigos
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+								<li><a class="dropdown-item" href="#">Agregar</a></li>
+								<li><a class="dropdown-item" href="#">Editar</a></li>
+								<li><a class="dropdown-item" href="#">Listar</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="#">Eliminar</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Nuevo evento</a>
+						</li>
+						<li class="nav-item pb-0 pt-5">
+							<a class="nav-link active btn btn-danger cerrar" aria-current="page" href="/logout">Cerrar
+								Sesion</a>
+						</li>
+					</ul>
 
-      </thead>
+				</div>
+			</div>
+		</div>
+	</nav>
 
-      <tbody th:each="amigo : ${amigos}">
 
-        <tr>
-          <th th:text="${amigo.name}"></th>
-          <td th:text="${amigo.mail}"></td>
-          
-          <td>
-            <a th:href="@{/user/alta/}"><i class="fa fa-arrow-up"></i></a>
-            <a th:href="@{/user/baja/}"><i class="fa fa-ban"></i></a>
-          </td>
-        </tr>
-      </tbody>
+	<!--footer-->
+	<footer class="page-footer font-small blue" th:fragment="pie">
 
-    </table>
-  </div>
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2020 Copyright: Miti/Miti - GRUPO 3
+		</div>
+		<!-- Copyright -->
 
-  <!--footer-->
-  <footer class="page-footer font-small blue" th:fragment="pie">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright: Miti/Miti - GRUPO 3
-    </div>
-    <!-- Copyright -->
-
-  </footer>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="/js/modals.js"></script>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script src="/js/modals.js"></script>
 
 </body>
+
 </html>
