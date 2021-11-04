@@ -32,19 +32,19 @@ public class Event {
         this.date = date;
     }
 
-    public String getNameEvent() {
+    public String getName() {
         return name;
     }
 
-    public void setNameEvent(String nameEvent) {
+    public void setName(String nameEvent) {
         this.name = nameEvent;
     }
 
-    public ArrayList<Participant> getParticipant() {
+    public ArrayList<Participant> getParticipants() {
         return participants;
     }
 
-    public void setParticipant(ArrayList<Participant> participant) {
+    public void setParticipants(ArrayList<Participant> participant) {
         this.participants = participant;
     }
 
