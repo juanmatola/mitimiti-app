@@ -29,5 +29,15 @@ public class EventService {
 		eventRepository.save(event);
 		
 	}
+	
+	public Event getEvent(Usuario loggedUser) throws Exception {
+		
+		try {
+			return eventRepository.findByUsuario(loggedUser).get();
+		}catch(Exception e) {
+			throw new Exception("El usuario no cuenta con eventos");
+		}
+		
+	}
 
 }
