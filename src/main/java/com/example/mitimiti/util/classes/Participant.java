@@ -3,27 +3,27 @@ package com.example.mitimiti.util.classes;
 import java.util.ArrayList;
 
 public class Participant {
-    private String nameParticipant;
+    private String name;
     private String mail;
-    private ArrayList<Spending>spending;
+    private ArrayList<Expense> expenses;
     private Double totalCost;
  
     public Participant() {
     }
 
-    public Participant(String nameParticipant, String mail, ArrayList<Spending> spending, Double totalCost) {
-        this.nameParticipant = nameParticipant;
+    public Participant(String nameParticipant, String mail, ArrayList<Expense> spending, Double totalCost) {
+        this.name = nameParticipant;
         this.mail = mail;
-        this.spending = spending;
+        this.expenses = spending;
         this.totalCost = totalCost;
     }
 
     public String getNameParticipant() {
-        return nameParticipant;
+        return name;
     }
 
     public void setNameParticipant(String nameParticipant) {
-        this.nameParticipant = nameParticipant;
+        this.name = nameParticipant;
     }
 
     public String getMail() {
@@ -34,12 +34,12 @@ public class Participant {
         this.mail = mail;
     }
 
-    public ArrayList<Spending> getSpending() {
-        return spending;
+    public ArrayList<Expense> getSpending() {
+        return expenses;
     }
 
-    public void setSpending(ArrayList<Spending> spending) {
-        this.spending = spending;
+    public void setSpending(ArrayList<Expense> spending) {
+        this.expenses = spending;
     }
 
     public Double getTotalCost() {
@@ -52,7 +52,7 @@ public class Participant {
 
     @Override
     public String toString() {
-        return "Participant{" + "nameParticipant=" + nameParticipant + ", mail=" + mail + ", spending=" + spending + ", totalCost=" + totalCost + '}';
+        return "Participant{" + "nameParticipant=" + name + ", mail=" + mail + ", spending=" + expenses + ", totalCost=" + totalCost + '}';
     }
 
 }

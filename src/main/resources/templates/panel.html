@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -12,56 +12,7 @@
 
 <body>
 
-	<nav class="navbar navbar-light bg-light fixed-top " id="culor">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><img src="Logo.png" alt="" width="80" height="80"
-					class="d-inline-block align-text-top"></a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-				aria-controls="offcanvasNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="offcanvas offcanvas-end navbar-light bg-light" tabindex="-1" id="offcanvasNavbar"
-				aria-labelledby="offcanvasNavbarLabel">
-				<div class="offcanvas-header">
-					<h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
-					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-						aria-label="Close"></button>
-				</div>
-				<div class="offcanvas-body">
-					<ul class="navbar-dark bg-light justify-content-end flex-grow-1 pe-3">
-
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#" $font-size-base: 10rem;>PERFIL</a>
-						</li>
-
-						<li class="nav-item dropdown ">
-							<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								Amigos
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-								<li><a class="dropdown-item" href="#">Agregar</a></li>
-								<li><a class="dropdown-item" href="#">Editar</a></li>
-								<li><a class="dropdown-item" href="#">Listar</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="#">Eliminar</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Nuevo evento</a>
-						</li>
-						<li class="nav-item pb-0 pt-5">
-							<a class="nav-link active btn btn-danger cerrar" aria-current="page" href="/">Cerrar
-								Sesion</a>
-						</li>
-					</ul>
-
-				</div>
-			</div>
-		</div>
-	</nav>
+	<nav th:insert="../fragments/components.html::menu"></nav>
 
 	<div class="row row-cols-sm-2 row-cols-md-2 g-0 carta">
 
@@ -130,17 +81,9 @@
 
 		</table>
 	</div>
-	<!-- Footer -->
-	<footer class="page-footer font-small blue">
-
-		<!-- Copyright -->
-		<div class="footer-copyright text-center py-3">© 2020 Copyright: Miti/Miti - GRUPO 3
-		</div>
-		<!-- Copyright -->
-
-	</footer>
-	<!-- Footer -->
-
+	
+	<footer th:insert="../fragments/components.html::pie"></footer>
+	
 	<div class="modal fade" id="ModalAmigo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -187,7 +130,7 @@
 
 				<div class="modal-body">
 
-					<form class="row g-3" id="FormularioEvento" action="" method="POST">
+					<form class="row g-3" id="FormularioEvento" action="/user/evento" method="POST">
 
 						<div class="col-md-4">
 							<label for="validationName" class="form-label">Nombre</label>

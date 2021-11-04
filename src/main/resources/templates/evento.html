@@ -10,7 +10,7 @@
     <title>Evento</title>
 </head>
 <body>
-    <nav th:insert="/fragments/components.html::menu"></nav>
+    <nav th:insert="../fragments/components.html::menu"></nav>
 
     <div th:fragment="evento(nombreEvento)">
         <span th:text="${nombreEvento}"></span>
@@ -69,7 +69,7 @@
             </div>
         
 
-    <footer th:insert="/fragments/components.html::pie"></footer>
+    <footer th:insert="../fragments/components.html::pie"></footer>
 
     <div class="modal fade" id="ModalGasto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

@@ -2,27 +2,27 @@ package com.example.mitimiti.util.classes;
 
 import java.util.ArrayList;
 
-public class Spending {
+public class Expense {
 
-    private ArrayList<Participant> participant;
+    private ArrayList<Participant> participants;
     private String detail;
     private Double amount;
 
-    public Spending() {
+    public Expense() {
     }
 
-    public Spending(ArrayList<Participant> participant, String detail, Double amount) {
-        this.participant = participant;
+    public Expense(ArrayList<Participant> participant, String detail, Double amount) {
+        this.participants = participant;
         this.detail = detail;
         this.amount = amount;
     }
 
     public ArrayList<Participant> getParticipant() {
-        return participant;
+        return participants;
     }
 
     public void setParticipant(ArrayList<Participant> participant) {
-        this.participant = participant;
+        this.participants = participant;
     }
 
     public String getDetail() {
@@ -43,7 +43,7 @@ public class Spending {
 
     @Override
     public String toString() {
-        return "Spending{" + "participant=" + participant + ", detail=" + detail + ", amount=" + amount + '}';
+        return "Spending{" + "participant=" + participants + ", detail=" + detail + ", amount=" + amount + '}';
     }
 
 }

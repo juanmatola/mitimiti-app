@@ -8,8 +8,8 @@ import com.example.mitimiti.entities.Usuario;
 
 public class Event {
     private Date date;
-    private String nameEvent;
-    private ArrayList<Participant>participant;
+    private String name;
+    private ArrayList<Participant> participants;
     private Usuario usuario;
     private Double totalCost;
 
@@ -18,8 +18,8 @@ public class Event {
 
     public Event(Date date, String nameEvent, ArrayList<Participant> participant, Usuario usuario, Double totalCost) {
         this.date = date;
-        this.nameEvent = nameEvent;
-        this.participant = participant;
+        this.name = nameEvent;
+        this.participants = participant;
         this.usuario = usuario;
         this.totalCost = totalCost;
     }
@@ -33,19 +33,19 @@ public class Event {
     }
 
     public String getNameEvent() {
-        return nameEvent;
+        return name;
     }
 
     public void setNameEvent(String nameEvent) {
-        this.nameEvent = nameEvent;
+        this.name = nameEvent;
     }
 
     public ArrayList<Participant> getParticipant() {
-        return participant;
+        return participants;
     }
 
     public void setParticipant(ArrayList<Participant> participant) {
-        this.participant = participant;
+        this.participants = participant;
     }
 
     public Usuario getUsuario() {
@@ -66,7 +66,7 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" + "date=" + date + ", nameEvent=" + nameEvent + ", participant=" + participant + ", usuario=" + usuario + ", TotalCost=" + totalCost + '}';
+        return "Event{" + "date=" + date + ", nameEvent=" + name + ", participant=" + participants + ", usuario=" + usuario + ", TotalCost=" + totalCost + '}';
     }
     
    
