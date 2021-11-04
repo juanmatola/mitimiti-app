@@ -11,7 +11,7 @@ import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 
 @Controller
 @RequestMapping("/user/evento")
-public class EventoController extends BaseUserController {
+public class EventController extends BaseUserController {
 
 	
 	@PostMapping()
