@@ -4,12 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
+import com.example.mitimiti.entities.Usuario;
+import com.example.mitimiti.entities.temporals.Event;
 import com.example.mitimiti.services.temporals.EventService;
+import com.example.mitimiti.util.exceptions.SessionException;
 
 @Controller
 @RequestMapping("/user/evento")
@@ -18,6 +24,28 @@ public class EventController extends BaseUserController {
 
 	@Autowired
 	private EventService eventService;
+	
+	
+	@GetMapping()
+	public String index(ModelMap model) {
+		
+		
+		try {
+
+			Usuario loggedUser = super.obtainLoggedUser();
+			Event event = this.eventService.getEvent(loggedUser);
+			
+			model.addAttribute("nombreEvento", event.getName());
+			model.addAttribute("amigos", event.getParticipants());
+			
+		} catch (Exception e) {
+			
+			return this.errorHandle(e);
+			
+		}
+		
+		return ViewNames.EVENT;
+	}
 	
 	@PostMapping()
 	public String createEvento ( 	@RequestParam("name") String name,
@@ -30,17 +58,21 @@ public class EventController extends BaseUserController {
 			
 		} catch (Exception e) {
 			
-			this.errorHandle(e);
+			return this.errorHandle(e);
 			
 		}
 		
-		return super.REDIRECT_TO_PANEL;
+		return super.REDIRECT_TO_EVENT;
 	}
 
 	@Override
 	public String errorHandle(Exception e) {
-	
-		return super.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
+		
+		if (e instanceof SessionException) {
+			return super.REDIRECT_TO_LOGIN;
+		} else {			
+			return super.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
+		}
 		
 	}
 	
