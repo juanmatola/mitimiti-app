@@ -2,6 +2,7 @@ package com.example.mitimiti.services.temporals;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,13 @@ public class EventService {
 	private ParticipantService participantService;
 
 	public void createNewEvent(String name, List<String> friendsIDs, Usuario usuario) throws Exception {
+		
+		try {
+			Optional<Event> evento = eventRepository.findByUsuario(usuario);
+			if(evento.isPresent()) eventRepository.deleteById(evento.get().getId());
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 		Event event = new Event();
 		event.setName(name);

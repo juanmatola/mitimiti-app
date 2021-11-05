@@ -12,4 +12,7 @@ import com.example.mitimiti.entities.temporals.Event;
 public interface EventRepository extends JpaRepository<Event, String> {
 
 	public Optional<Event> findByUsuario(Usuario usuario);
+	
+	public void deleteAllByUsuario(Usuario usuario);
+
 }
