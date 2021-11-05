@@ -35,12 +35,12 @@ public class FriendService {
 	}
 	
 	public void updateFriend(	String id,
-								String mail, 
-								String nombre) throws Exception{
+								String nombre, 
+								String email) throws Exception{
 		
 		Friend friend = this.getFriendById(id);
 		
-		friend.setMail(mail);
+		friend.setMail(email);
 		friend.setName(nombre);
 		
 		friendRepository.save(friend);
