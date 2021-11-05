@@ -82,18 +82,18 @@
 
                 <div class="modal-body">
 
-                    <form class="row g-3" id="FormularioGasto" action="/user/friends/gasto" method="POST">
+                    <form class="row g-3" id="FormularioGasto" action="/user/evento/gasto" method="POST">
 
                         <div class="col-md-6">
                             <label for="validationName" class="form-label">Descripción</label>
-                            <input type="text" class="form-control" name="descrip"></input>
+                            <input type="text" class="form-control" name="desc"></input>
                         </div>
                         <div class="col-md-6">        
                             <label for="validationName" class="form-label">Precio</label>
-                            <input type="number" class="form-control" name="precio"></input>
+                            <input type="text" class="form-control" name="monto"></input>
                         </div>    
                             <label for="validationName" class="form-label">Amigo que pagó</label>
-                            <select name="amigo">
+                            <select name="comprador">
                                 <div th:each="amigo : ${listaamigo}">
                                     <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}"></option>
                                 </div>
