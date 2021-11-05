@@ -94,7 +94,7 @@
                         </div>    
                             <label for="validationName" class="form-label">Amigo que pagó</label>
                             <select name="comprador">
-                                <div th:each="amigo : ${listaamigo}">
+                                <div th:each="amigo : ${amigos}">
                                     <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}"></option>
                                 </div>
                             </select>
