@@ -64,6 +64,14 @@ public class Expense {
 		this.amount = amount;
 	}
 
+	public Participant getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(Participant buyer) {
+		this.buyer = buyer;
+	}
+
 	public List<Participant> getConsumers() {
 		return consumers;
 	}
