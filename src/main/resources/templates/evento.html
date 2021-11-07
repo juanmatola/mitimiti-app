@@ -12,62 +12,63 @@
 <body>
     <nav th:insert="../fragments/components.html::menu"></nav>
 
-    <div th:fragment="evento(nombreEvento)">
-        <span th:text="${nombreEvento}"></span>
-    </div>
-
-   <!--tabla para agregar gastos, elementos y asignar amigo-->
-
-    <div class="row row-cols-sm-2 row-cols-md-2 g-0 carta">
-
-        <div class="col">
-          <div class="card ">
-            <img src="images.png" class="card-img-top imgtar" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">CREAR GASTO</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalGasto">
-                  AÑADIR GASTO
-                </button>
-            </div>
-          </div>
-        </div>
-   
-        <div class="container col text-center"
-        >
+    <div class="container general-top-margin">
         
+        <div th:fragment="evento(nombreEvento)">
+            <h1>Evento: <span th:text="${nombreEvento}" class="h3 text-muted"></span> </h1>
+        </div>
+        
+        <!--tabla para agregar gastos, elementos y asignar amigo-->
+
+        <div class="row g-0 ">
+   
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <img src="/crear-gasto.png" class="card-img-top imgtar" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">CREAR GASTO</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                        content. This content is a little bit longer.</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalGasto">
+                            AÑADIR GASTO
+                        </button>
+                    </div>
+                </div>
+            </div>
+      
+            <div class="col-12 col-md-6 mt-3 mt-md-0 text-center px-3">
+           
                 <h2>Gastos:</h2>
         
                 <table class="table">
-        
                     <thead>
                         <tr>
-                            <th> DESCRIPCIÓN </th>
-                            <th> PRECIO </th>
-                            <th> AMIGO QUE PAGÓ </th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Lo pagó</th>
+                            <th>Acción</th>
                         </tr>
-        
                     </thead>
-        
-                    <tbody th:each="gasto : ${listagastos}">
-        
-                        <tr>
+                    <tbody>
+                        <tr th:each="gasto : ${listagastos}">
                             <th th:text="${gasto.descrip}"></th>
                             <td th:text="${gasto.precio}"></td>
                             <td th:text="${gasto.amigo}"></td>
-                            <td >
+                            <td>
                                 <a th:href="@{}"><i class="fas fa-user-edit"></i></a>
                             </td>
                             <td>
-                            <a th:href="@{}"><i class="fas fa-trash-alt"></i></i></a>
+                                <a th:href="@{}"><i class="fas fa-trash-alt"></i></i></a>
                             </td>
                         </tr>
                     </tbody>
-        
                 </table>
+
             </div>
-        
+
+        </div>
+
+    </div>
 
     <footer th:insert="../fragments/components.html::pie"></footer>
 
@@ -85,33 +86,33 @@
                     <form class="row g-3" id="FormularioGasto" action="/user/evento/gasto" method="POST">
 
                         <div class="col-md-6">
-                            <label for="validationName" class="form-label">Descripción</label>
+                            <label for="validationName" class="form-label">Detalle</label>
                             <input type="text" class="form-control" name="desc"></input>
                         </div>
                         <div class="col-md-6">        
-                            <label for="validationName" class="form-label">Precio</label>
+                            <label for="validationName" class="form-label">Monto</label>
                             <input type="text" class="form-control" name="monto"></input>
-                        </div>    
-                            <label for="validationName" class="form-label">Amigo que pagó</label>
+                        </div>
+                        <div>    
+                            <label for="validationName" class="form-label">Amigo que pagó: </label>
                             <select name="comprador">
                                 <div th:each="amigo : ${amigos}">
                                     <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}"></option>
                                 </div>
                             </select>
-                
                         </div>
                     </form>
                    
                     <div class="mx-auto pb-3">
-                        <label class="form-label">Marcá el amigo que lo consumió</label>
+                        <label class="form-label">Marcá quienes consumieron:</label>
 
-                    <ul class="list-group">
-                        <li class="list-group-item"  th:each="Amigo : ${amigos}">
-                            <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
-                            <span th:text="${Amigo.name}"></span>
-                        </li>
-                    </ul>
-                </div>
+                        <ul class="list-group">
+                            <li class="list-group-item"  th:each="Amigo : ${amigos}">
+                                <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
+                                <span th:text="${Amigo.name}"></span>
+                            </li>
+                        </ul>
+                    </div>
 
 
                 <div class="modal-footer">
@@ -122,13 +123,12 @@
         </div>
     </div>
 
-   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-   <script src="/static/js/listaAmigos.js"></script>
+    <script src="/static/js/listaAmigos.js"></script>
 </body>
-
 </html>
