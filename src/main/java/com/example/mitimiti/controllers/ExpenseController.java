@@ -1,5 +1,7 @@
 package com.example.mitimiti.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +17,17 @@ public class ExpenseController extends BaseUserController {
 	@PostMapping()
 	public String createExpense(@RequestParam("desc") String description,
 								@RequestParam("monto") String monto,
-								@RequestParam("comprador") String buyerId) {
+								@RequestParam("comprador") String buyerId,
+								@RequestParam("participantes[]") List<String> participantsIds) {
 
 		System.err.println("Datos del gasto:");
-		System.err.println(buyerId);
-		System.err.println(description);
-		System.err.println(monto);
+		System.err.println(" Detalle:" + description);
+		System.err.println(" Comprador: " + buyerId);
+		System.err.println(" Monto: " + monto);
+		System.err.println(" Consumidores: ");
+		for (String participant : participantsIds) {
+			System.err.println("  " + participant);
+		}
 		
 		return super.REDIRECT_TO_EVENT;
 	}
