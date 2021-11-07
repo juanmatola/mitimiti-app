@@ -18,7 +18,19 @@ public class ParticipantService {
 	private ParticipantRepository participantRepository;
 	@Autowired
 	private FriendService friendService;
+	
+	public Participant getParticipantById (String id) throws Exception{
+		
+		return participantRepository.getById(id);
+		
+	}
 
+	public List<Participant> getParticipantsListByIds(List<String> participantsIds) throws Exception {
+
+		return participantRepository.findAllById(participantsIds);
+				
+	}
+	
 	public List<Participant> gerateParticipantsListByFriendIDs(List<String> friendsIDs) throws Exception {
 		
 		
@@ -39,4 +51,5 @@ public class ParticipantService {
 		
 		return participantesList;
 	}
+
 }
