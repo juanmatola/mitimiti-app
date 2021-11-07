@@ -101,18 +101,18 @@
                                 </div>
                             </select>
                         </div>
+                        <div class="mx-auto pb-3">
+                            <label class="form-label">Marcá quienes consumieron:</label>
+    
+                            <ul class="list-group">
+                                <li class="list-group-item"  th:each="Amigo : ${amigos}">
+                                    <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
+                                    <span th:text="${Amigo.name}"></span>
+                                </li>
+                            </ul>
+                        </div>
                     </form>
                    
-                    <div class="mx-auto pb-3">
-                        <label class="form-label">Marcá quienes consumieron:</label>
-
-                        <ul class="list-group">
-                            <li class="list-group-item"  th:each="Amigo : ${amigos}">
-                                <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
-                                <span th:text="${Amigo.name}"></span>
-                            </li>
-                        </ul>
-                    </div>
 
 
                 <div class="modal-footer">
