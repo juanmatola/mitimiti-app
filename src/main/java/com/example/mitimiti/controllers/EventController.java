@@ -14,7 +14,9 @@ import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.entities.temporals.Event;
+import com.example.mitimiti.entities.temporals.Expense;
 import com.example.mitimiti.services.temporals.EventService;
+import com.example.mitimiti.services.temporals.ExpenseService;
 import com.example.mitimiti.util.exceptions.SessionException;
 
 @Controller
@@ -24,6 +26,8 @@ public class EventController extends BaseUserController {
 
 	@Autowired
 	private EventService eventService;
+	@Autowired
+	private ExpenseService expenseSerivice;
 	
 	
 	@GetMapping()
@@ -34,9 +38,11 @@ public class EventController extends BaseUserController {
 
 			Usuario loggedUser = super.obtainLoggedUser();
 			Event event = this.eventService.getEvent(loggedUser);
+			List<Expense> expenses = this.expenseSerivice.getAll();
 			
 			model.addAttribute("nombreEvento", event.getName());
 			model.addAttribute("amigos", event.getParticipants());
+			model.addAttribute("listagastos", expenses);
 			
 		} catch (Exception e) {
 			

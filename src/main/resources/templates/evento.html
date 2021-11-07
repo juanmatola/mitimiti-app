@@ -51,14 +51,14 @@
                     </thead>
                     <tbody>
                         <tr th:each="gasto : ${listagastos}">
-                            <th th:text="${gasto.descrip}"></th>
-                            <td th:text="${gasto.precio}"></td>
-                            <td th:text="${gasto.amigo}"></td>
+                            <th th:text="${gasto.detail}"></th>
+                            <td th:text="${gasto.amount}"></td>
+                            <td th:text="${gasto.buyer.name}"></td>
                             <td>
-                                <a th:href="@{}"><i class="fas fa-user-edit"></i></a>
+                                <a href=""><i class="fas fa-user-edit"></i></a>
                             </td>
                             <td>
-                                <a th:href="@{}"><i class="fas fa-trash-alt"></i></i></a>
+                                <a href=""><i class="fas fa-trash-alt"></i></i></a>
                             </td>
                         </tr>
                     </tbody>

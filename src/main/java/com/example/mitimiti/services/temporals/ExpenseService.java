@@ -33,4 +33,10 @@ public class ExpenseService {
 		expenseRepository.save(expense);
 		
 	}
+
+	public List<Expense> getAll() throws Exception{
+		
+		return expenseRepository.findAll();
+		
+	}
 }
