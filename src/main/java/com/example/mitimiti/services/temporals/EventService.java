@@ -52,7 +52,7 @@ public class EventService {
 			Optional<Event> evento = eventRepository.findByUsuario(usuario);
 			
 			if(evento.isPresent()) {
-				this.deleteById(evento.get().getId());
+				this.deleteEvent(evento.get());
 			}
 			
 		}catch(Exception e) {
@@ -63,11 +63,11 @@ public class EventService {
 		
 	}
 	
-	private void deleteById(String id) throws Exception{
+	private void deleteEvent(Event event) throws Exception{
 		
-		expenseService.removeAllConsumers();
+		expenseService.removeAllConsumersByEvent(event);
 		
-		eventRepository.deleteById(id);
+		eventRepository.deleteById(event.getId());
 		
 	}
 
