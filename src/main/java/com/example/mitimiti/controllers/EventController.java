@@ -38,7 +38,7 @@ public class EventController extends BaseUserController {
 
 			Usuario loggedUser = super.obtainLoggedUser();
 			Event event = this.eventService.getEvent(loggedUser);
-			List<Expense> expenses = this.expenseSerivice.getAll();
+			List<Expense> expenses = this.expenseSerivice.getAllExpensesFromEvent(event);
 			
 			model.addAttribute("nombreEvento", event.getName());
 			model.addAttribute("amigos", event.getParticipants());
