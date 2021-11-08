@@ -14,16 +14,14 @@
 
 	<nav th:insert="../fragments/components.html::menu"></nav>
 
-	<div class="row row-cols-sm-2 row-cols-md-2 g-0 carta">
+	<div class="row row-cols-sm-2 row-cols-md-2 g-0 carta" style="margin-bottom: 0;">
 
 		<div class="col">
 			<div class="card ">
 				<img src="/CrearAmigo.png" class="card-img-top imgtar" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">CREAR AMIGO</h5>
-					<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-						additional
-						content. This content is a little bit longer.</p>
+					<h5 class="card-title">AMIGOS</h5>
+					<p class="card-text">Crea amigos para que puedan participar de tus eventos.</p>
 					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAmigo">
 						AÑADIR AMIGO
 					</button>
@@ -35,10 +33,9 @@
 			<div class="card">
 				<img src="/CrearEvento.png" class="card-img-top  imgtar" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">CREAR EVENTO</h5>
-					<p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-						additional
-						content. This content is a little bit longer.</p>
+					<h5 class="card-title">EVENTOS</h5>
+					<p th:if="${event != null}"class="card-text bg-warning">¡Tienes un evento creado sin finalizar! <span>-> <a href="/user/evento">ir al evento</a></span> </p>
+					<p class="card-text">Crea un evento para poder dividir gastos con tus amigos</p>
 					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalEvento">
 						CREAR EVENTO
 					</button>
@@ -47,10 +44,9 @@
 		</div>
 
 	</div>
-	<div class="container col text-center"
->
+	<div class="container text-center">
 
-		<h2>Tus amigos:</h2>
+		<h2 class="text-start">Tus amigos:</h2>
 
 		<table class="table">
 
