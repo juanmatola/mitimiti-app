@@ -33,6 +33,16 @@ public class ExpenseService {
 		expenseRepository.save(expense);
 		
 	}
+	
+	public void removeAllConsumers() throws Exception{
+		List<Expense> expenses = this.getAll();
+		
+		for (Expense expense : expenses) {
+			expense.setConsumers(null);
+		}
+		
+		expenseRepository.saveAll(expenses);
+	}
 
 	public List<Expense> getAll() throws Exception{
 		

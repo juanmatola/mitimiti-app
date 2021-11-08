@@ -18,15 +18,12 @@ public class EventService {
 	private EventRepository eventRepository;
 	@Autowired
 	private ParticipantService participantService;
+	@Autowired
+	private ExpenseService expenseService;
 
 	public void createNewEvent(String name, List<String> friendsIDs, Usuario usuario) throws Exception {
 		
-		try {
-			Optional<Event> evento = eventRepository.findByUsuario(usuario);
-			if(evento.isPresent()) eventRepository.deleteById(evento.get().getId());
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
+		this.removeOldEventIfExists(usuario);
 		
 		Event event = new Event();
 		event.setName(name);
@@ -45,6 +42,32 @@ public class EventService {
 		}catch(Exception e) {
 			throw new Exception("El usuario no cuenta con eventos");
 		}
+		
+	}
+	
+	private void removeOldEventIfExists(Usuario usuario) throws Exception {
+		
+		try {
+			
+			Optional<Event> evento = eventRepository.findByUsuario(usuario);
+			
+			if(evento.isPresent()) {
+				this.deleteById(evento.get().getId());
+			}
+			
+		}catch(Exception e) {
+			
+			throw new Exception("Error al remover el evento anterior");
+			
+		}
+		
+	}
+	
+	private void deleteById(String id) throws Exception{
+		
+		expenseService.removeAllConsumers();
+		
+		eventRepository.deleteById(id);
 		
 	}
 
