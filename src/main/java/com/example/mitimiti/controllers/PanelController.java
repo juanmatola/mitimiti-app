@@ -13,7 +13,10 @@ import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.entities.Friend;
 import com.example.mitimiti.entities.Usuario;
+import com.example.mitimiti.entities.temporals.Event;
 import com.example.mitimiti.services.FriendService;
+import com.example.mitimiti.services.temporals.EventService;
+import com.example.mitimiti.util.exceptions.EventException;
 
 @Controller
 @RequestMapping("/user")
@@ -21,6 +24,8 @@ public class PanelController extends BaseUserController{
 	
 	@Autowired
 	private FriendService friendService;
+	@Autowired
+	private EventService eventService;
 	
 	@GetMapping()
 	public String index (ModelMap model) {
@@ -30,11 +35,15 @@ public class PanelController extends BaseUserController{
 			Usuario usuarioLogeado = this.obtainLoggedUser();
 			
 			List<Friend> amigos = friendService.getFriendsByUsuario(usuarioLogeado); 
-			
 			model.addAttribute("amigos", amigos);
+	
+			Event event = eventService.getEvent(usuarioLogeado);
+			model.addAttribute("event", event);
 			
 		} catch (Exception e) {
-			return this.errorHandle(e);
+			if (!(e instanceof EventException)) {	
+				return this.errorHandle(e);
+			}			
 		}
 		
 		return ViewNames.PANEL;

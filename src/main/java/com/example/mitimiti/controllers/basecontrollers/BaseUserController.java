@@ -7,13 +7,15 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.util.ErrorHandler;
+import com.example.mitimiti.util.exceptions.SessionException;
 
 public abstract class BaseUserController implements ErrorHandler{
 	
 	protected final String REDIRECT_TO_LOGIN = "redirect:/?action=login";
 	protected final String REDIRECT_TO_PANEL = "redirect:/user";
+	protected final String REDIRECT_TO_EVENT = "redirect:/user/evento";
 	
-	protected Usuario obtainLoggedUser() throws Exception {
+	protected Usuario obtainLoggedUser() throws SessionException {
 		
  		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 
@@ -24,7 +26,7 @@ public abstract class BaseUserController implements ErrorHandler{
  		if (sessionUsuario != null) {
 			return sessionUsuario;
 		}else {
-			throw new Exception("No user session");
+			throw new SessionException("No user session");
 		}
 
 	}
