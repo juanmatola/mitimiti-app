@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.entities.temporals.Event;
 import com.example.mitimiti.repository.temporals.EventRepository;
+import com.example.mitimiti.util.exceptions.EventException;
 
 @Service
 public class EventService {
@@ -35,12 +36,12 @@ public class EventService {
 		
 	}
 	
-	public Event getEvent(Usuario loggedUser) throws Exception {
+	public Event getEvent(Usuario loggedUser) throws EventException {
 		
 		try {
 			return eventRepository.findByUsuario(loggedUser).get();
 		}catch(Exception e) {
-			throw new Exception("El usuario no cuenta con eventos");
+			throw new EventException("El usuario no cuenta con eventos");
 		}
 		
 	}
