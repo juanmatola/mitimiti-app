@@ -18,7 +18,7 @@
 	
 			<div class="col">
 				<div class="card mx-3 h-100 border-dark">
-					<img src="/CrearAmigo.png" class="card-img-top imgtar" alt="...">
+					<img src="/CrearAmigo.png" class="card-img-top imgtar" alt="Crear Amigo">
 					<div class="card-body">
 						<h5 class="card-title">AMIGOS</h5>
 						<p class="card-text">Crea amigos para que puedan participar de tus eventos.</p>
@@ -31,7 +31,7 @@
 	
 			<div class="col">
 				<div class="card mx-3 h-100 border-dark">
-					<img src="/CrearEvento.png" class="card-img-top  imgtar" alt="...">
+					<img src="/CrearEvento.png" class="card-img-top  imgtar" alt="Crear Evento">
 					<div class="card-body">
 						<h5 class="card-title">EVENTOS</h5>
 						<p th:if="${event != null}"class="card-text bg-warning">¡Tienes un evento creado sin finalizar! <span>-> <a href="/user/evento">ir al evento</a></span> </p>
@@ -100,10 +100,10 @@
 
 						<div class="col-md-4">
 							<label for="validationName" class="form-label">Nombre</label>
-							<input type="text" class="form-control" name="name"></input>
+							<input type="text" class="form-control" name="name" required></input>
 
 							<label for="validationName" class="form-label">Mail</label>
-							<input type="email" class="form-control" name="mail"></input>
+							<input type="email" class="form-control" name="mail" required></input>
 						</div>
 
 					</form>
@@ -135,7 +135,7 @@
 
 						<div class="col-md-4">
 							<label for="validationName" class="form-label">Nombre</label>
-							<input type="text" class="form-control" name="name"></input>
+							<input type="text" class="form-control" name="name" required></input>
 						</div>
 
 						<ul class="list-group">
