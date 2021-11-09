@@ -82,4 +82,25 @@ public class EventController extends BaseUserController {
 		
 	}
 	
+	//Unicamente para probar el calcular costos
+	@GetMapping("/prueba")
+	public String index2(ModelMap model) {
+		
+		
+		try {
+
+			Usuario loggedUser = super.obtainLoggedUser();
+			Event event = this.eventService.getEvent(loggedUser);
+			List<Expense> expenses = this.expenseSerivice.getAllExpensesFromEvent(event);
+			this.eventService.calcularCostos(loggedUser);
+			
+		} catch (Exception e) {
+			
+			return this.errorHandle(e);
+			
+		}
+		
+		return ViewNames.EVENT;
+	}
+	
 }
