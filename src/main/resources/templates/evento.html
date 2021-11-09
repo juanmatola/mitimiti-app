@@ -71,7 +71,7 @@
         </div>
         
         <div class="my-5 text-center">
-            <button type="button" class="btn btn-success px-3 px-md-5" href="/user/resumen">Calcular</button>
+            <button type="button" class="btn btn-success px-3 px-md-5" href="">Calcular</button>
         </div>
 
         <div class="separator"></div>
@@ -97,19 +97,19 @@
 
                         <div class="col-md-6">
                             <label for="validationName" class="form-label">Descripción</label>
-                            <input type="text" class="form-control" name="desc"></input>
+                            <input type="text" class="form-control" name="desc" required></input>
                         </div>
 
                         <div class="col-md-6">        
                             <label for="validationName" class="form-label">Precio</label>
-                            <input type="number" class="form-control" name="monto"></input>
+                            <input type="number" class="form-control" name="monto" required></input>
                         </div> 
 
                         <div class="col-12">
                             <label for="validationName" class="form-label">Amigo que pagó</label>
                             <select name="comprador">
                                 <div th:each="amigo : ${amigos}">
-                                    <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}"></option>
+                                    <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}" required></option>
                                 </div>
                             </select>
                         </div>
@@ -119,7 +119,7 @@
     
                             <ul class="list-group">
                                 <li class="list-group-item"  th:each="Amigo : ${amigos}">
-                                    <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
+                                    <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]" required>
                                     <span th:text="${Amigo.name}"></span>
                                 </li>
                             </ul>
