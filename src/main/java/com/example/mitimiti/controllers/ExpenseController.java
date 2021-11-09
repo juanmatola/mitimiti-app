@@ -39,6 +39,22 @@ public class ExpenseController extends BaseUserController {
 		return super.REDIRECT_TO_EVENT;
 	}
 	
+	@GetMapping("/delete/{id}")
+	public String deleteExpense(@PathVariable("id") String id) {
+		
+		try {
+			
+			expenseService.deleteById(id);
+			
+		} catch (Exception e) {
+			
+			return this.errorHandle(e);
+			
+		}
+		
+		return super.REDIRECT_TO_EVENT;
+	}
+	
 
 	@Override
 	public String errorHandle(Exception e) {
