@@ -109,18 +109,18 @@ public class EventService {
 			
 			if (isBuyer) {
 				if (isParticipant) {
-					individualExpenses.put("Gastos: " + expense.getDetail(), (expense.getAmount() / expense.getConsumers().size()));
-					buyerInformation.put("Cobro por: " + expense.getDetail(), (expense.getAmount() - (expense.getAmount() / expense.getConsumers().size())));
+					individualExpenses.put("Consumo final de " + expense.getDetail(), (expense.getAmount() / expense.getConsumers().size()));
+					buyerInformation.put("A recaudar de " + expense.getDetail(), (expense.getAmount() - (expense.getAmount() / expense.getConsumers().size())));
 				}else {
-					individualExpenses.put("Gastos: " + expense.getDetail(), 0.0);
-					buyerInformation.put("Cobro por: " + expense.getDetail(), expense.getAmount());
+					individualExpenses.put("Consumo final de " + expense.getDetail(), 0.0);
+					buyerInformation.put("A recaudar de " + expense.getDetail(), expense.getAmount());
 				}
 			}else {
-				buyerInformation.put("Cobro por: " + expense.getDetail(), 0.0);
+				buyerInformation.put("A recaudar de " + expense.getDetail(), 0.0);
 				if (isParticipant) {
-					individualExpenses.put("Gastos: " + expense.getDetail(), (expense.getAmount() / expense.getConsumers().size()));
+					individualExpenses.put("Consumo final de " + expense.getDetail(), (expense.getAmount() / expense.getConsumers().size()));
 				}else {
-					individualExpenses.put("Gastos: " + expense.getDetail(), 0.0);
+					individualExpenses.put("Consumo final de " + expense.getDetail(), 0.0);
 				}
 			}
 		}
