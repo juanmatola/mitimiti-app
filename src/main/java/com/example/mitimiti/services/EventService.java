@@ -1,6 +1,5 @@
 package com.example.mitimiti.services;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -79,55 +78,64 @@ public class EventService {
 	
 	public void calcularCostos(Usuario loggedUser) throws Exception {
 		Event event = getEvent(loggedUser);
-		List<Participant> participants = event.getParticipants();
+		List<Participant> participantsList = event.getParticipants();
 		List<Expense> expenses = expenseService.getAllExpensesFromEvent(event);
-		HashMap<String, List<HashMap<String, Double>>> listOfIndividualTotals = new HashMap<String, List<HashMap<String, Double>>>();
-		participants.forEach(participant -> {
-			listOfIndividualTotals.put(participant.getName(), getIndividualExpenses(participant, expenses));
-		});
 		
-		//INFO VISUALIZADA EN LA CONSOLA action=/user/evento/prueba
-		for(Map.Entry<String, List<HashMap<String, Double>>> ex : listOfIndividualTotals.entrySet()) {
-			System.out.println("--------------------");
-			System.out.println("Resumen de: " + ex.getKey());
-			for(HashMap<String, Double> exx : ex.getValue()) {
-				for(Map.Entry<String, Double> exDetails : exx.entrySet()) {
-					System.out.println(exDetails.getKey() + " : " + exDetails.getValue());
-				}
-				System.out.println("----------");
-			}
+		HashMap<String, HashMap<String, Double>> resumen = new HashMap<String, HashMap<String, Double>>();
+		
+		for (Participant participant : participantsList) {
+			resumen.put(participant.getId() , this.getParticipantDetail(participant, expenses));
 		}
+		
+		this.showResumeInConsole(resumen);
+		
 	}
 	
-	private List<HashMap<String, Double>> getIndividualExpenses(Participant participant, List<Expense> expenses){
-		HashMap<String, Double> individualExpenses = new HashMap();
-		HashMap<String, Double> buyerInformation = new HashMap();
+	private HashMap<String, Double> getParticipantDetail(Participant participant, List<Expense> expenses){
 		
-		for(Expense expense : expenses) {
-			boolean isParticipant = expense.getConsumers().stream().filter(p -> p.getId().equals(participant.getId())).findFirst().isPresent();
-			boolean isBuyer = expense.getBuyer().getId().equals(participant.getId());
-			
-			if (isBuyer) {
-				if (isParticipant) {
-					individualExpenses.put("Consumo final de " + expense.getDetail(), (expense.getAmount() / expense.getConsumers().size()));
-					buyerInformation.put("A recaudar de " + expense.getDetail(), (expense.getAmount() - (expense.getAmount() / expense.getConsumers().size())));
-				}else {
-					individualExpenses.put("Consumo final de " + expense.getDetail(), 0.0);
-					buyerInformation.put("A recaudar de " + expense.getDetail(), expense.getAmount());
-				}
-			}else {
-				buyerInformation.put("A recaudar de " + expense.getDetail(), 0.0);
-				if (isParticipant) {
-					individualExpenses.put("Consumo final de " + expense.getDetail(), (expense.getAmount() / expense.getConsumers().size()));
-				}else {
-					individualExpenses.put("Consumo final de " + expense.getDetail(), 0.0);
-				}
+		HashMap<String, Double> participantDetail = new HashMap<String, Double>();
+		String participantId = participant.getId();
+		List<Participant> expenseConsumers;
+		Double consumoTotal = 0.0;
+		Double aporteTotal = 0.0;
+		
+		for (Expense expense : expenses) {
+		
+			if (participant.getId().equals(expense.getBuyer().getId())) {
+				aporteTotal = aporteTotal + expense.getAmount();
 			}
+			
+			expenseConsumers = expense.getConsumers();
+			
+			boolean isConsumer = expenseConsumers.stream().filter(consumer -> consumer.getId().equals(participantId)).findFirst().isPresent();
+			
+			if (isConsumer) {
+				consumoTotal = consumoTotal + (expense.getAmount()/expenseConsumers.size());
+			}
+			
 		}
-		List<HashMap<String, Double>> totalInformation = new ArrayList();
-		totalInformation.add(individualExpenses);
-		totalInformation.add(buyerInformation);
-		return totalInformation;
+		
+		participantDetail.put("aporteTotal", aporteTotal);
+		participantDetail.put("consumoTotal", consumoTotal);
+		participantDetail.put("saldo", (aporteTotal-consumoTotal) );
+		
+		return participantDetail;
+	}
+	
+	private void showResumeInConsole( HashMap<String, HashMap<String, Double>> resumen ) {
+		
+		for (Map.Entry<String, HashMap<String, Double>> participantDetail : resumen.entrySet()) {
+			String participantId = participantDetail.getKey();
+			HashMap<String, Double> expenseResumen = participantDetail.getValue();
+			
+			System.err.println("------------------");
+			System.err.println(participantId);
+			System.out.println("Consumo total: " + expenseResumen.get("consumoTotal"));
+			System.out.println("Aporte total: " + expenseResumen.get("aporteTotal"));
+			System.out.println("Saldo: " + expenseResumen.get("saldo"));
+			
+		}
+		
 	}
 
 }
