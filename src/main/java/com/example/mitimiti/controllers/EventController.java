@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
+import com.example.mitimiti.entities.Event;
+import com.example.mitimiti.entities.Expense;
 import com.example.mitimiti.entities.Usuario;
-import com.example.mitimiti.entities.temporals.Event;
-import com.example.mitimiti.entities.temporals.Expense;
-import com.example.mitimiti.services.temporals.EventService;
-import com.example.mitimiti.services.temporals.ExpenseService;
+import com.example.mitimiti.services.EventService;
+import com.example.mitimiti.services.ExpenseService;
 import com.example.mitimiti.util.exceptions.SessionException;
 
 @Controller

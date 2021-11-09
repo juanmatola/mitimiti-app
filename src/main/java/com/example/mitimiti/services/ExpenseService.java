@@ -1,4 +1,4 @@
-package com.example.mitimiti.services.temporals;
+package com.example.mitimiti.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mitimiti.entities.temporals.Event;
-import com.example.mitimiti.entities.temporals.Expense;
-import com.example.mitimiti.entities.temporals.Participant;
-import com.example.mitimiti.repository.temporals.ExpenseRepository;
+import com.example.mitimiti.entities.Event;
+import com.example.mitimiti.entities.Expense;
+import com.example.mitimiti.entities.Participant;
+import com.example.mitimiti.repository.ExpenseRepository;
 
 @Service
 public class ExpenseService {

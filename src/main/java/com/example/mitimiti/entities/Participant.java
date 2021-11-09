@@ -1,4 +1,4 @@
-package com.example.mitimiti.entities.temporals;
+package com.example.mitimiti.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

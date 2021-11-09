@@ -1,4 +1,4 @@
-package com.example.mitimiti.services.temporals;
+package com.example.mitimiti.services;
 
 import java.util.Date;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.mitimiti.entities.Event;
 import com.example.mitimiti.entities.Usuario;
-import com.example.mitimiti.entities.temporals.Event;
-import com.example.mitimiti.repository.temporals.EventRepository;
+import com.example.mitimiti.repository.EventRepository;
 import com.example.mitimiti.util.exceptions.EventException;
 
 @Service
