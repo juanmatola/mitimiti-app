@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.mitimiti.config.RedirectTo;
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.services.UsuarioService;
@@ -40,7 +41,7 @@ public class FrontController extends BaseUserController {
 			return this.errorHandle(e);
 		}
 		
-		return super.REDIRECT_TO_LOGIN;
+		return RedirectTo.LOGIN;
 	}
 
 	@Override

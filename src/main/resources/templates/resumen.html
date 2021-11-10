@@ -42,11 +42,11 @@
 					</thead>
 					<tbody>
 					
-						<tr th:each="entry, stats : ${resumen}">
+						<tr th:each="entry, stats : ${resume}">
 							<td th:text="${entry.key.name}"></td>
-							<td th:text="${entry.value.consumoTotal}"></td>
-							<td th:text="${entry.value.aporteTotal}"></td>
-							<td th:text="${entry.value.saldo}"></td>
+							<td th:text="${entry.value.consumption}"></td>
+							<td th:text="${entry.value.contribution}"></td>
+							<td th:text="${entry.value.balance}"></td>
 						</tr>
 					</tbody>
 
