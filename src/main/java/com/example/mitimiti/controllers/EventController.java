@@ -72,17 +72,6 @@ public class EventController extends BaseUserController {
 		
 		return super.REDIRECT_TO_EVENT;
 	}
-
-	@Override
-	public String errorHandle(Exception e) {
-		
-		if (e instanceof SessionException) {
-			return super.REDIRECT_TO_LOGIN;
-		} else {			
-			return super.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
-		}
-		
-	}
 	
 	@GetMapping("/resumen")
 	public String resumen(ModelMap model) {
@@ -108,4 +97,32 @@ public class EventController extends BaseUserController {
 		return ViewNames.RESUMEN;
 	}
 	
+	@GetMapping("/delete")
+	public String delete() {
+				
+		try {
+			
+			Usuario user = super.obtainLoggedUser();
+			this.eventService.removeOldEventIfExists(user);
+			
+		} catch (Exception e) {
+			
+			this.errorHandle(e);
+			
+		}
+		
+		
+		return super.REDIRECT_TO_PANEL;
+	}
+
+	@Override
+	public String errorHandle(Exception e) {
+		
+		if (e instanceof SessionException) {
+			return super.REDIRECT_TO_LOGIN;
+		} else {			
+			return super.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
+		}
+		
+	}
 }

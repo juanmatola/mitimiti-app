@@ -50,7 +50,7 @@ public class EventService {
 		
 	}
 	
-	private void removeOldEventIfExists(Usuario usuario) throws Exception {
+	public void removeOldEventIfExists(Usuario usuario) throws Exception {
 		
 		try {
 			
@@ -123,6 +123,7 @@ public class EventService {
 		return participantDetail;
 	}
 	
+	@SuppressWarnings("unused")
 	private void showResumeInConsole( HashMap<Participant, HashMap<String, Double>> resumen ) {
 		
 		for (Map.Entry<Participant, HashMap<String, Double>> participantDetail : resumen.entrySet()) {
