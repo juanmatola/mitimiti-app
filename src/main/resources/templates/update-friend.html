@@ -21,10 +21,10 @@
             <div class="col-12 col-md-8">
                 <form th:action="@{/user/friends/update/{id}(id=${friend.id})}" method="post">
                     <div class="mb-3">
-                      <input type="text" class="form-control" name="name" id="name" th:value="${friend.name}">
+                      <input type="text" class="form-control" name="name" id="name" th:value="${friend.name}" required>
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control" name="email" id="email" th:value="${friend.mail}">
+                        <input type="email" class="form-control" name="email" id="email" th:value="${friend.mail}" required>
                     </div>
                     <div class="mb-3 text-end">
                         <button type="submit" class="btn btn-success">Guardar</button>
