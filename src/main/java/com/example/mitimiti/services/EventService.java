@@ -76,18 +76,19 @@ public class EventService {
 		
 	}
 	
-	public void calcularCostos(Usuario loggedUser) throws Exception {
+	public HashMap<Participant, HashMap<String, Double>> calcularCostos(Usuario loggedUser) throws Exception {
 		Event event = getEvent(loggedUser);
 		List<Participant> participantsList = event.getParticipants();
 		List<Expense> expenses = expenseService.getAllExpensesFromEvent(event);
 		
-		HashMap<String, HashMap<String, Double>> resumen = new HashMap<String, HashMap<String, Double>>();
+		HashMap<Participant, HashMap<String, Double>> resumen = new HashMap<Participant, HashMap<String, Double>>();
 		
 		for (Participant participant : participantsList) {
-			resumen.put(participant.getId() , this.getParticipantDetail(participant, expenses));
+			resumen.put(participant, this.getParticipantDetail(participant, expenses));
 		}
 		
-		this.showResumeInConsole(resumen);
+		
+		return resumen;
 		
 	}
 	
@@ -122,14 +123,14 @@ public class EventService {
 		return participantDetail;
 	}
 	
-	private void showResumeInConsole( HashMap<String, HashMap<String, Double>> resumen ) {
+	private void showResumeInConsole( HashMap<Participant, HashMap<String, Double>> resumen ) {
 		
-		for (Map.Entry<String, HashMap<String, Double>> participantDetail : resumen.entrySet()) {
-			String participantId = participantDetail.getKey();
+		for (Map.Entry<Participant, HashMap<String, Double>> participantDetail : resumen.entrySet()) {
+			Participant participant = participantDetail.getKey();
 			HashMap<String, Double> expenseResumen = participantDetail.getValue();
 			
 			System.err.println("------------------");
-			System.err.println(participantId);
+			System.err.println(participant.getName());
 			System.out.println("Consumo total: " + expenseResumen.get("consumoTotal"));
 			System.out.println("Aporte total: " + expenseResumen.get("aporteTotal"));
 			System.out.println("Saldo: " + expenseResumen.get("saldo"));

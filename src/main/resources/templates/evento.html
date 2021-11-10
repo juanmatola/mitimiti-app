@@ -71,7 +71,7 @@
         </div>
         
         <div class="my-5 text-center">
-            <button type="button" class="btn btn-success px-3 px-md-5" href="">Calcular</button>
+            <a href="/user/evento/resumen" class="btn btn-success px-3 px-md-5" style="color: white !important;">Calcular</a>
         </div>
 
         <div class="separator"></div>
@@ -119,7 +119,7 @@
     
                             <ul class="list-group">
                                 <li class="list-group-item"  th:each="Amigo : ${amigos}">
-                                    <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]" required>
+                                    <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
                                     <span th:text="${Amigo.name}"></span>
                                 </li>
                             </ul>
