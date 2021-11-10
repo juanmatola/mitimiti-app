@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.mitimiti.config.RedirectTo;
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.entities.Event;
@@ -53,7 +54,7 @@ public class PanelController extends BaseUserController{
 	@Override
 	public String errorHandle(Exception e) {
 		
-		return super.REDIRECT_TO_LOGIN;
+		return RedirectTo.LOGIN;
 		
 	}
 

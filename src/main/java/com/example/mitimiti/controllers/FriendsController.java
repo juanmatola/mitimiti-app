@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.mitimiti.config.RedirectTo;
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.entities.Usuario;
@@ -33,11 +34,11 @@ public class FriendsController extends BaseUserController {
 			friendService.createNewFriend(mail, name, usuario);
 						
 		} catch (Exception e) {
-			return super.REDIRECT_TO_LOGIN;
+			return RedirectTo.LOGIN;
 		}
 		
-		return this.REDIRECT_TO_PANEL;
-		
+		return RedirectTo.PANEL;
+
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -53,7 +54,7 @@ public class FriendsController extends BaseUserController {
 			return this.errorHandle(e);			
 		}
 		
-		return this.REDIRECT_TO_PANEL;
+		return RedirectTo.PANEL;
 		
 	}
 	
@@ -82,14 +83,14 @@ public class FriendsController extends BaseUserController {
 			return this.errorHandle(e);
 		}
 		
-		return this.REDIRECT_TO_PANEL;
+		return RedirectTo.PANEL;
 	}
 	
 	
 	@Override
 	public String errorHandle(Exception e) {
 		
-		return this.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
+		return RedirectTo.PANEL.concat("?err=").concat(e.getMessage());
 
 	}
 	
