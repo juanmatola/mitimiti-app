@@ -14,7 +14,7 @@
 	<!-- menu-->
 	<nav class="navbar navbar-light bg-light fixed-top " id="culor" th:fragment="menu">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><img src="/Logo.png" alt="" width="80" height="80"
+			<a class="navbar-brand" href="/user"><img src="/Logo.png" alt="Logo" width="80" height="80"
 					class="d-inline-block align-text-top"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
 				aria-controls="offcanvasNavbar">
@@ -31,27 +31,9 @@
 					<ul class="navbar-dark bg-light justify-content-end flex-grow-1 pe-3">
 
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#" $font-size-base: 10rem;>PERFIL</a>
+							<a class="nav-link active" aria-current="page" href="/user" $font-size-base: 10rem;>Panel</a>
 						</li>
 
-						<li class="nav-item dropdown ">
-							<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">
-								Amigos
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-								<li><a class="dropdown-item" href="#">Agregar</a></li>
-								<li><a class="dropdown-item" href="#">Editar</a></li>
-								<li><a class="dropdown-item" href="#">Listar</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
-								<li><a class="dropdown-item" href="#">Eliminar</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Nuevo evento</a>
-						</li>
 						<li class="nav-item pb-0 pt-5">
 							<a class="nav-link active btn btn-danger cerrar" aria-current="page" href="/logout">Cerrar
 								Sesion</a>

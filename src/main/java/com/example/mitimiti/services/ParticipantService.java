@@ -1,4 +1,4 @@
-package com.example.mitimiti.services.temporals;
+package com.example.mitimiti.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.mitimiti.entities.Friend;
-import com.example.mitimiti.entities.temporals.Participant;
-import com.example.mitimiti.repository.temporals.ParticipantRepository;
-import com.example.mitimiti.services.FriendService;
+import com.example.mitimiti.entities.Participant;
+import com.example.mitimiti.repository.ParticipantRepository;
 
 @Service
 public class ParticipantService {

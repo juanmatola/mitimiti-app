@@ -1,4 +1,4 @@
-package com.example.mitimiti.entities.temporals;
+package com.example.mitimiti.entities;
 
 import java.util.List;
 

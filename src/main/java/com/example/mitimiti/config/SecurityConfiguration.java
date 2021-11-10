@@ -30,8 +30,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/user/**").hasRole("USER")
-				.antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
+				.antMatchers("/css/**", "/js/**", "/img/**", "/").permitAll()
+				.antMatchers("/**").authenticated()
 				.and().formLogin().loginPage("/?action=login").loginProcessingUrl("/auth")
 				.usernameParameter("username").passwordParameter("password")
 				.defaultSuccessUrl("/user").failureUrl("/?error=login_error").permitAll()

@@ -1,5 +1,5 @@
 
-package com.example.mitimiti.entities.temporals;
+package com.example.mitimiti.entities;
 
 import java.util.Date;
 import java.util.List;
@@ -13,8 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-
-import com.example.mitimiti.entities.Usuario;
 
 @Entity
 @Table
