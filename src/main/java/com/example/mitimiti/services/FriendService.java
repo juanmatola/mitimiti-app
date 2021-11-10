@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mitimiti.entity.Friend;
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Friend;
+import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.repository.FriendRepository;
 
 @Service
@@ -35,12 +35,12 @@ public class FriendService {
 	}
 	
 	public void updateFriend(	String id,
-								String mail, 
-								String nombre) throws Exception{
+								String nombre, 
+								String email) throws Exception{
 		
 		Friend friend = this.getFriendById(id);
 		
-		friend.setMail(mail);
+		friend.setMail(email);
 		friend.setName(nombre);
 		
 		friendRepository.save(friend);
@@ -52,7 +52,6 @@ public class FriendService {
 		try {			
 			friendRepository.deleteById(id);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			throw new Exception("Id incorrecto");	
 		}
 		
@@ -74,6 +73,12 @@ public class FriendService {
 		}else {
 			throw new Exception("No existe amigo con dicho id");
 		}
+		
+	}
+	
+	public List<Friend> getFriendsByIdList (List<String> friendIDs) throws Exception{
+		
+		return friendRepository.findAllById(friendIDs);
 		
 	}
 	

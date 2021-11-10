@@ -1,5 +1,5 @@
 
-package com.example.mitimiti.entity.superclass;
+package com.example.mitimiti.entities.superclass;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

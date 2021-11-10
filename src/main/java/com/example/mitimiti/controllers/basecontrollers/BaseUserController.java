@@ -5,13 +5,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.example.mitimiti.entity.Usuario;
+import com.example.mitimiti.entities.Usuario;
+import com.example.mitimiti.util.ErrorHandler;
+import com.example.mitimiti.util.exceptions.SessionException;
 
-public abstract class BaseUserController {
+public abstract class BaseUserController implements ErrorHandler{
 	
-	protected String loginPath = "?action=login";
-	
-	protected Usuario obtainLoggedUser() throws Exception {
+	protected Usuario obtainLoggedUser() throws SessionException {
 		
  		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
 
@@ -22,7 +22,7 @@ public abstract class BaseUserController {
  		if (sessionUsuario != null) {
 			return sessionUsuario;
 		}else {
-			throw new Exception("No user session");
+			throw new SessionException("No user session");
 		}
 
 	}

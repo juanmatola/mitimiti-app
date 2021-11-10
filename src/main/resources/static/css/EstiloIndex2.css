@@ -3,11 +3,23 @@
     margin: 0 0 0 10px;
 }
 .carta{
-    padding: 120px;
-    margin: 100px;
+    padding-top: 120px;
 }
 .carousel-img{
     height: 700px;
+}
+.page-margins{
+    margin-top: 107px;
+    margin-bottom: 56px;
+}
+.page-top-margin {
+    margin-top: 107px;
+}
+.page-bootom-margin{
+    margin-bottom: 56px;
+}
+.separator{
+    min-height: 70px;
 }
 .imgtar{
     width: 100px!important;
@@ -79,4 +91,7 @@ a:hover{
 }
 .faq-section .accordion-body {
     padding: 15px 0px 15px;
+}
+.general-top-margin{
+    margin-top: 107px;
 }

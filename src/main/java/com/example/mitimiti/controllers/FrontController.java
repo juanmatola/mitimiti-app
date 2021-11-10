@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.mitimiti.config.RedirectTo;
 import com.example.mitimiti.config.ViewNames;
+import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.services.UsuarioService;
-import com.example.mitimiti.util.ErrorHandler;
 
 @Controller
 @RequestMapping("/")
-public class FrontController implements ErrorHandler {
+public class FrontController extends BaseUserController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -33,26 +34,20 @@ public class FrontController implements ErrorHandler {
 											 @RequestParam("email") Optional<String> mail){
 		
 		try {
-			if(mail.isPresent()) {
-				usuarioService.createNewUsuario(username, password, password2, mail.get());
-			}else {
-				usuarioService.createNewUsuario(username, password, password2);
-			}
-			
+
+			usuarioService.createNewUsuario(username, password, password2, mail);
+
 		} catch (Exception e) {
-			System.out.println(e);
-			this.errorHandle(e, model);
+			return this.errorHandle(e);
 		}
 		
-		return "redirect:/?action=login";
+		return RedirectTo.LOGIN;
 	}
 
 	@Override
-	public String errorHandle(Exception e, ModelMap model) {
+	public String errorHandle(Exception e) {
 		
-		model.addAttribute("err", e.getMessage());
-		
-		return this.index(model);
+		return "/?err=".concat(e.getMessage());
 
 	}
 }
