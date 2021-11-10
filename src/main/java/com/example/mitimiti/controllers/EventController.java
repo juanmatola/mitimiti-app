@@ -1,5 +1,6 @@
 package com.example.mitimiti.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
 import com.example.mitimiti.entities.Event;
 import com.example.mitimiti.entities.Expense;
+import com.example.mitimiti.entities.Participant;
 import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.services.EventService;
 import com.example.mitimiti.services.ExpenseService;
@@ -80,6 +82,30 @@ public class EventController extends BaseUserController {
 			return super.REDIRECT_TO_PANEL.concat("?err=").concat(e.getMessage());
 		}
 		
+	}
+	
+	@GetMapping("/resumen")
+	public String resumen(ModelMap model) {
+		
+		
+		try {
+
+			Usuario loggedUser = super.obtainLoggedUser();
+			Event event = this.eventService.getEvent(loggedUser);
+			//List<Expense> expenses = this.expenseSerivice.getAllExpensesFromEvent(event);
+			
+			HashMap<Participant, HashMap<String, Double>> resumen = this.eventService.calcularCostos(loggedUser);
+			
+			model.addAttribute("nombreEvento", event.getName());
+			model.addAttribute("resumen", resumen);
+			
+		} catch (Exception e) {
+			
+			return this.errorHandle(e);
+			
+		}
+		
+		return ViewNames.RESUMEN;
 	}
 	
 }

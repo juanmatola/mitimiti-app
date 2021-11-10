@@ -2,6 +2,7 @@ package com.example.mitimiti.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,36 @@ public class ExpenseService {
 	public List<Expense> getAll() throws Exception{
 		
 		return expenseRepository.findAll();
+		
+	}
+
+	public void deleteById(String id) throws Exception {
+
+
+		this.removeConsumersByExpenseId(id);
+		
+		expenseRepository.deleteById(id);
+
+	}
+	
+	private void removeConsumersByExpenseId(String id) throws Exception {
+		
+		Expense expense = this.getExpenseById(id);
+		
+		expense.setConsumers(null);
+		
+		expenseRepository.save(expense);
+	}
+	
+	public Expense getExpenseById(String id) throws Exception {
+		
+		Optional<Expense> res = expenseRepository.findById(id);
+		
+		if (res.isPresent()) {
+			return res.get();
+		}else{
+			throw new Exception("Id incorrecto");
+		}
 		
 	}
 	
