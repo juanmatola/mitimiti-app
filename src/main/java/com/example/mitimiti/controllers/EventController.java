@@ -83,10 +83,10 @@ public class EventController extends BaseUserController {
 			Event event = this.eventService.getEvent(loggedUser);
 			//List<Expense> expenses = this.expenseSerivice.getAllExpensesFromEvent(event);
 			
-			HashMap<Participant, HashMap<String, Double>> resumen = this.eventService.calcularCostos(loggedUser);
+			HashMap<Participant, HashMap<String, Double>> resume = this.eventService.calcularCostos(loggedUser);
 			
 			model.addAttribute("nombreEvento", event.getName());
-			model.addAttribute("resumen", resumen);
+			model.addAttribute("resume", resume);
 			
 		} catch (Exception e) {
 			

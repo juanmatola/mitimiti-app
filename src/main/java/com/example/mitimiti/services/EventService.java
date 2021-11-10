@@ -81,14 +81,14 @@ public class EventService {
 		List<Participant> participantsList = event.getParticipants();
 		List<Expense> expenses = expenseService.getAllExpensesFromEvent(event);
 		
-		HashMap<Participant, HashMap<String, Double>> resumen = new HashMap<Participant, HashMap<String, Double>>();
+		HashMap<Participant, HashMap<String, Double>> resume = new HashMap<Participant, HashMap<String, Double>>();
 		
 		for (Participant participant : participantsList) {
-			resumen.put(participant, this.getParticipantDetail(participant, expenses));
+			resume.put(participant, this.getParticipantDetail(participant, expenses));
 		}
 		
 		
-		return resumen;
+		return resume;
 		
 	}
 	
@@ -97,13 +97,13 @@ public class EventService {
 		HashMap<String, Double> participantDetail = new HashMap<String, Double>();
 		String participantId = participant.getId();
 		List<Participant> expenseConsumers;
-		Double consumoTotal = 0.0;
-		Double aporteTotal = 0.0;
+		Double totalConsumption = 0.0;
+		Double totalContribution = 0.0;
 		
 		for (Expense expense : expenses) {
 		
 			if (participant.getId().equals(expense.getBuyer().getId())) {
-				aporteTotal = aporteTotal + expense.getAmount();
+				totalContribution = totalContribution + expense.getAmount();
 			}
 			
 			expenseConsumers = expense.getConsumers();
@@ -111,14 +111,14 @@ public class EventService {
 			boolean isConsumer = expenseConsumers.stream().filter(consumer -> consumer.getId().equals(participantId)).findFirst().isPresent();
 			
 			if (isConsumer) {
-				consumoTotal = consumoTotal + (expense.getAmount()/expenseConsumers.size());
+				totalConsumption = totalConsumption + (expense.getAmount()/expenseConsumers.size());
 			}
 			
 		}
 		
-		participantDetail.put("aporteTotal", aporteTotal);
-		participantDetail.put("consumoTotal", consumoTotal);
-		participantDetail.put("saldo", (aporteTotal-consumoTotal) );
+		participantDetail.put("contribution", Math.ceil(totalContribution));
+		participantDetail.put("consumption", Math.ceil(totalConsumption));
+		participantDetail.put("balance", Math.ceil(totalContribution-totalConsumption));
 		
 		return participantDetail;
 	}
