@@ -79,19 +79,19 @@
     </main>
 
 
-    <footer th:insert="../fragments/components.html::pie"></footer>
+    <footer class="fixed-bottom" th:insert="../fragments/components.html::pie"></footer>
 
     <div class="modal fade" id="ModalGasto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
 
             <div class="modal-content">
 
-                <div class="modal-header">
+                <div class="modal-header px-4">
                     <h5 class="modal-title" id="exampleModalLabel">Crear Gasto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body px-4">
 
                     <form class="row g-3" id="FormularioGasto" action="/user/evento/gasto" method="POST">
 
@@ -106,7 +106,7 @@
                         </div> 
 
                         <div class="col-12">
-                            <label for="validationName" class="form-label">Amigo que pagó</label>
+                            <label for="validationName" class="form-label">Amigo que pagó: </label>
                             <select name="comprador">
                                 <div th:each="amigo : ${amigos}">
                                     <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}" required></option>
@@ -129,12 +129,16 @@
 
                 </div>
 
-                <div class="modal-footer">
-                	<button type="submit" class="btn btn-warning col-md-12 text-center" form="FormularioGasto">Añadir</button>
-					<button type="button" class="btn btn-secondary col-md-12 text-center" data-bs-dismiss="modal">Cerrar</button>
-                    
+                <div class="modal-footer px-4">
+					<div class="row w-100">
+						<div class="col-12 col-md-6">
+                            <button type="button" class="btn btn-secondary col-md-12 text-center" data-bs-dismiss="modal">Cerrar</button>
+						</div>
+						<div class="col-12 col-md-6">
+                            <button type="submit" class="btn btn-warning col-md-12 text-center" form="FormularioGasto">Añadir</button>
+						</div>
+					</div>		                    
                 </div>   
-
 
             </div>
 

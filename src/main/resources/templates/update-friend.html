@@ -13,9 +13,9 @@
 	<nav th:insert="../fragments/components.html::menu"></nav>
 
 
-    <div class="container" style="margin-top: 107px; min-height: calc(100vh - 163px);">
-        <div class="row pt-5 align-items-center justify-content-center bg-personalizado border-dark card" >
-            <div class="col-12 col-md-8 text-center">
+    <div class="container d-flex justify-content-center align-items-center" style="margin-top: 107px; min-height: calc(100vh - 163px);">
+        <div class="row w-100 pt-5 align-items-center justify-content-center bg-personalizado border-dark card" >
+            <div class="col-12 col-md-8 text-center mb-3">
                 <h2>EDITAR AMIGO</h2>
             </div>
             <div class="col-12 col-md-8">
@@ -26,8 +26,15 @@
                     <div class="mb-3">
                         <input type="email" class="form-control" name="email" id="email" th:value="${friend.mail}" required>
                     </div>
-                    <div class="mb-3 text-end">
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                    <div class="mb-3">
+						<div class="row my-4">
+							<div class="col-6 text-start">
+								<a href="/user" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Volver</a>
+							</div>
+							<div class="col-6 text-end">
+								<button type="submit" class="btn btn-success">Guardar</button>
+							</div>
+						</div>
                     </div>
                 </form>
             </div>
@@ -35,7 +42,7 @@
     </div>
 
 
-	<footer th:insert="../fragments/components.html::pie"></footer>
+	<footer class="fixed-bottom" th:insert="../fragments/components.html::pie"></footer>
 
 	<!-- Modal de Error -->
 	<div class="modal fade" tabindex="-1" id="ErrorModal">
