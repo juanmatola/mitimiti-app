@@ -5,6 +5,7 @@ public final class RedirectTo {
 	public static final String LOGIN = redirect.concat("/?action=login");
 	public static final String PANEL = redirect.concat("/user");
 	public static final String EVENT = redirect.concat("/user/evento");
+	public static final String RESUME = redirect.concat("/user/evento/resumen");
 	
 	private RedirectTo() {}
 }

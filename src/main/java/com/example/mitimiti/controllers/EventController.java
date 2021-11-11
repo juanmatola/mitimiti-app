@@ -20,6 +20,7 @@ import com.example.mitimiti.entities.Participant;
 import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.services.EventService;
 import com.example.mitimiti.services.ExpenseService;
+import com.example.mitimiti.services.SendService;
 import com.example.mitimiti.util.exceptions.SessionException;
 
 @Controller
@@ -31,6 +32,8 @@ public class EventController extends BaseUserController {
 	private EventService eventService;
 	@Autowired
 	private ExpenseService expenseSerivice;
+	@Autowired
+	private SendService sendService;
 	
 	
 	@GetMapping()
@@ -82,8 +85,6 @@ public class EventController extends BaseUserController {
 
 			Usuario loggedUser = super.obtainLoggedUser();
 			Event event = this.eventService.getEvent(loggedUser);
-			//List<Expense> expenses = this.expenseSerivice.getAllExpensesFromEvent(event);
-			
 			HashMap<Participant, HashMap<String, Double>> resume = this.eventService.calcularCostos(loggedUser);
 			
 			model.addAttribute("nombreEvento", event.getName());
@@ -96,6 +97,27 @@ public class EventController extends BaseUserController {
 		}
 		
 		return ViewNames.RESUMEN;
+	}
+	
+	@GetMapping("/resumen/send")
+	public String resumeSend() {
+		
+		
+		try {
+			
+			Usuario loggedUser = super.obtainLoggedUser();
+			Event event = this.eventService.getEvent(loggedUser);
+			HashMap<Participant, HashMap<String, Double>> resume = this.eventService.calcularCostos(loggedUser);
+			
+			this.sendService.sendResume(event.getName() ,resume);
+			
+		} catch (Exception e) {
+			
+			this.errorHandle(e);
+		
+		}
+		
+		return RedirectTo.RESUME;
 	}
 	
 	@GetMapping("/delete")

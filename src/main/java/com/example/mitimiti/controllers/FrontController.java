@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.mitimiti.config.RedirectTo;
 import com.example.mitimiti.config.ViewNames;
 import com.example.mitimiti.controllers.basecontrollers.BaseUserController;
+import com.example.mitimiti.services.SendService;
 import com.example.mitimiti.services.UsuarioService;
 
 @Controller
@@ -21,6 +22,8 @@ public class FrontController extends BaseUserController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
+	private SendService sendService;
 	
 	@GetMapping()
 	public String index (ModelMap model) {
@@ -36,7 +39,9 @@ public class FrontController extends BaseUserController {
 		try {
 
 			usuarioService.createNewUsuario(username, password, password2, mail);
-
+			
+			this.sendService.sayHello(username , mail);
+			
 		} catch (Exception e) {
 			return this.errorHandle(e);
 		}
