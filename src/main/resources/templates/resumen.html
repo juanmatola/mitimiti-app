@@ -27,7 +27,7 @@
 
 		
 
-		<div class="col bg-personalizado border-dark card pb-5 mt-5 py-2">
+		<div class="col bg-personalizado border-dark card pb-4 mt-5 py-2">
 
 			<div class="col px-3 text-start">
 
@@ -47,14 +47,14 @@
 							<td th:text="${entry.key.name}"></td>
 							<td th:text="${entry.value.consumption}"></td>
 							<td th:text="${entry.value.contribution}"></td>
-							<td th:text="${entry.value.balance}"></td>
+							<td th:class="${entry.value.balance >= 0 ? 'text-success' : 'text-danger'}" th:text="${entry.value.balance}"></td>
 						</tr>
 					</tbody>
 
 				</table>
 			</div>
 
-			<div class="container col-6">
+			<div class="container col-6 py-4">
 				<div class="row"> 
 					<div class="col-4 px-3"></div>
 						<a href="/user/evento/delete" class="btn btn-danger text-light"> Finalizar evento</a>
