@@ -25,7 +25,7 @@
 			<h2><span th:text="${nombreEvento}" class="small"></span></h2>
 		</div>
 
-		
+
 
 		<div class="col bg-personalizado border-dark card pb-4 mt-5 py-2">
 
@@ -42,31 +42,40 @@
 						</tr>
 					</thead>
 					<tbody>
-					
+
 						<tr th:each="entry, stats : ${resume}">
 							<td th:text="${entry.key.name}"></td>
 							<td th:text="${entry.value.consumption}"></td>
 							<td th:text="${entry.value.contribution}"></td>
-							<td th:class="${entry.value.balance >= 0 ? 'text-success' : 'text-danger'}" th:text="${entry.value.balance}"></td>
+							<td th:class="${entry.value.balance >= 0 ? 'text-success' : 'text-danger'}"
+								th:text="${entry.value.balance}"></td>
 						</tr>
 					</tbody>
 
 				</table>
 			</div>
 
-			<div class="container col-6 py-4">
-				<div class="row"> 
-					<div class="col-4 px-3"></div>
+			<div class="container py-4">
+				<div class="row align-items-center">
+
+					<div class="col-4 pt-2 text-star">
+						<a href="/user/evento" class="btn btn-warning "><i class="fas fa-chevron-left"></i> Volver</a>
+					</div>
+
+					<div class="col-4 px-3 text-center">
+						<a href="/user/evento/resumen/send" class="btn btn-success text-light"> Enviar resumen </a>
+					</div>
+					<div class="col-4 px-3 text-end">
 						<a href="/user/evento/delete" class="btn btn-danger text-light"> Finalizar evento</a>
 					</div>
+
+
 				</div>
 			</div>
+
+
+
 			
-			<div class="col-6 pt-2" ></div>
-					<a href="/user/evento" class="btn btn-warning "><i class="fas fa-chevron-left"></i> Volver</a>
-			</div>
-		
-			<div class="separator"></div>
 
 		</div>
 	</main>
