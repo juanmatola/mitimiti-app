@@ -18,27 +18,27 @@
   
         <!--tabla para agregar gastos, elementos y asignar amigo-->
 
-        <div class="ps-3 py-5">
-            <h2>Evento: <span th:text="${nombreEvento}" class="small"></span></h2>
+        <div class="py-1 my-5 bg-personalizado border-dark card text-center  ">
+            <h2 class="text-center"><span th:text="${nombreEvento}" class="small"></span></h2>
         </div>
 
         <div class="row g-0">
     
-            <div class="col px-3">
-                <div class="card border-dark">
+            <div class="col pe-4 ">
+                <div class="bg-personalizado border-dark card">
                 <img src="/img/Gastos.png" class="card-img-top imgtar" alt="...">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <h5 class="card-title">CREAR GASTO</h5>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalGasto">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalGasto">
                         AÑADIR GASTO
                     </button>
                 </div>
                 </div>
             </div>
         
-            <div class="col px-3 text-start">
+            <div class="col-8 bg-personalizado border-dark card py-2">
             
-                <h2>Gastos:</h2>
+                <h2 class="text-center">GASTOS</h2>
         
                 <table class="table">
         
@@ -61,8 +61,10 @@
                             </td>
                         </tr>
                     </tbody>
+                    
         
                 </table>
+                
             </div>
     
             
@@ -128,8 +130,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" form="FormularioGasto">Añadir</button>
+                	<button type="submit" class="btn btn-warning col-md-12 text-center" form="FormularioGasto">Añadir</button>
+					<button type="button" class="btn btn-secondary col-md-12 text-center" data-bs-dismiss="modal">Cerrar</button>
+                    
                 </div>   
 
 

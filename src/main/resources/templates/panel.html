@@ -17,12 +17,13 @@
 		<div class="row row-cols-sm-2 row-cols-md-2 pt-3 g-0">
 	
 			<div class="col">
-				<div class="card mx-3 h-100 border-dark">
+				<div class="card mx-3 h-100 bg-personalizado border-dark card ">
 					<img src="/img/CrearAmigo.png" class="card-img-top imgtar" alt="Crear Amigo">
-					<div class="card-body">
+					<div class="card-body text-center">
 						<h5 class="card-title">AMIGOS</h5>
 						<p class="card-text">Crea amigos para que puedan participar de tus eventos.</p>
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalAmigo">
+						<p class="card-text">¡Recorda agregarte entre ellos!</p>
+						<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalAmigo">
 							AÑADIR AMIGO
 						</button>
 					</div>
@@ -30,13 +31,13 @@
 			</div>
 	
 			<div class="col">
-				<div class="card mx-3 h-100 border-dark">
+				<div class="card mx-3 h-100 bg-personalizado border-dark card ">
 					<img src="/img/CrearEvento.png" class="card-img-top  imgtar" alt="Crear Evento">
-					<div class="card-body">
+					<div class="card-body text-center">
 						<h5 class="card-title">EVENTOS</h5>
 						<p th:if="${event != null}"class="card-text bg-warning">¡Tienes un evento creado sin finalizar! <span>-> <a href="/user/evento">ir al evento</a></span> </p>
 						<p class="card-text">Crea un evento para poder dividir gastos con tus amigos</p>
-						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalEvento">
+						<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalEvento">
 							CREAR EVENTO
 						</button>
 					</div>
@@ -45,9 +46,9 @@
 	
 		</div>
 
-		<div class="text-center">
+		<div class="text-center bg-personalizado border-dark card pb-5 mt-5">
 	
-			<h2 class="text-start my-4">Tus amigos:</h2>
+			<h2 class="my-4 text-center">TUS AMIGOS</h2>
 	
 			<table class="table">
 	
@@ -98,7 +99,7 @@
 
 					<form class="row g-3" id="FormularioAmigo" action="/user/friends/create" method="POST">
 
-						<div class="col-md-4">
+						<div class="col-md-12">
 							<label for="validationName" class="form-label">Nombre</label>
 							<input type="text" class="form-control" name="name" required></input>
 
@@ -111,8 +112,9 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-primary" form="FormularioAmigo">Añadir</button>
+					<button type="submit" class="btn btn-warning col-md-12 text-center" form="FormularioAmigo">Añadir</button>
+					<button type="button" class="btn btn-secondary col-md-12 text-center" data-bs-dismiss="modal">Cerrar</button>
+					
 				</div>
 
 
@@ -133,12 +135,13 @@
 
 					<form class="row g-3" id="FormularioEvento" action="/user/evento" method="POST">
 
-						<div class="col-md-4">
+						<div class="col-md-12">
 							<label for="validationName" class="form-label">Nombre</label>
 							<input type="text" class="form-control" name="name" required></input>
 						</div>
 
 						<ul class="list-group">
+							<label for="validationName" class="form-label">Amigos que participan del evento</label>
 							<li class="list-group-item"  th:each="Amigo : ${amigos}">
 								<input class="form-check-input me-1" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
 								<span th:text="${Amigo.name}"></span>
@@ -150,8 +153,9 @@
 				</div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-					<button type="submit" class="btn btn-primary" form="FormularioEvento">Crear</button>
+					<button type="submit" class="btn btn-warning col-md-12 text-center" form="FormularioEvento">Crear</button>
+					<button type="button" class="btn btn-secondary col-md-12 text-center" data-bs-dismiss="modal">Cerrar</button>
+					
 				</div>
 
 

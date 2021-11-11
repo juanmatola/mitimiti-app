@@ -8,6 +8,7 @@
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/108daf0d0a.js" crossorigin="anonymous"></script>
 	<title>Resumen</title>
 </head>
 
@@ -19,12 +20,14 @@
 
 		<!--tabla para agregar gastos, elementos y asignar amigo-->
 
-		<div class="ps-3 py-5">
-			<h1>Resumen</h1>
-			<h2>Evento: <span th:text="${nombreEvento}" class="small"></span></h2>
+		<div class="ps-3 py-3 bg-personalizado border-dark card text-center">
+			<h1 class="">RESUMEN</h1>
+			<h2><span th:text="${nombreEvento}" class="small"></span></h2>
 		</div>
 
-		<div class="col">
+		
+
+		<div class="col bg-personalizado border-dark card pb-5 mt-5 py-2">
 
 			<div class="col px-3 text-start">
 
@@ -53,14 +56,20 @@
 				</table>
 			</div>
 
+			<div class="container col-6">
+				<div class="row"> 
+					<div class="col-4 px-3"></div>
+					<a href="/user/evento/delete" class="btn btn-danger"> Finalizar evento</a>
+					</div>
 
-
-			<div class="my-5 text-center">
-				<a href="/user/evento/delete" class="btn btn-danger px-3 px-md-5">Finalizar evento</a>
+					
+				</div>
 			</div>
-
-			<div class="separator"></div>
-
+			
+			<div class="col-6 pt-2" ></div>
+					<a href="/user/evento" class="btn btn-warning"><i class="fas fa-chevron-left"></i> Volver</a>
+			</div>
+					<div class="separator"></div>
 	</main>
 
 

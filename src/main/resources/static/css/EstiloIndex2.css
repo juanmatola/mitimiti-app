@@ -3,10 +3,29 @@ body{
     background-repeat: repeat;
     background-size: auto;
     min-height: 100vh;
+    font-family: "Quicksand" , sans-serif !important;
+    font-size: 20px !important;
+    background-attachment: fixed;
 }
+.bg-personalizado{
+    background-color: rgb(204, 204, 204) !important;
+    
+}
+
+.bg-personalizado2{
+    background-color: rgba(79, 79, 79, 1) !important;
+    border-bottom: 2px solid black;
+}
+.bg-personalizado3{
+    background-color: rgba(79, 79, 79, 1) !important;
+}
+
 .pading{
     padding: 120px 0 0 10px ;
     margin: 0 0 0 10px;
+}
+.but{
+    align-items: center !important;
 }
 .carta{
     padding-top: 120px;
@@ -33,7 +52,7 @@ body{
     align-self: center;
 }
 footer {
-    background-color: #38618C;
+    background-color: #f32121 !important;
     color: azure;
     width: 100%;
 }
@@ -56,20 +75,21 @@ a:hover{
 }
 .section-header h3 {
     font-size: 22px;
-    color: #2196f3;
+    color: #f32121;
     text-transform: uppercase;
 }
 .section-header h2 {
     font-size: 32px;
     color: #292929;
     position: relative;
+
 }
 .section-header h2:after {
     content: "";
     height: 3px;
     max-width: 100%;
     width: 120px;
-    background: #2196f3;
+    background: #f32121;
     position: absolute;
     bottom: -25px;
     left: 0;
@@ -82,10 +102,10 @@ a:hover{
 .faq-section .accordion-button {
     padding: 15px 0px 15px;
     font-weight: bold;
-    border: 0;
+    border:rgba(79, 79, 79, 0.8);
     font-size: 18px;
     color: #333333;
-    text-align: left;
+    text-align: center  !important;
     border-bottom: 1px solid #ddd; 
 }
 .faq-section .accordion-button:focus {
@@ -93,11 +113,17 @@ a:hover{
 }
 .faq-section .accordion-button:not(.collapsed) {
     background: none;
-    color: #1b6ce5;
+    color: #f32121;
+    
 }
 .faq-section .accordion-body {
     padding: 15px 0px 15px;
+    
 }
 .general-top-margin{
     margin-top: 107px;
+}
+.accordion-item{
+    padding-left: 15px;
+    padding-right: 15px;
 }
