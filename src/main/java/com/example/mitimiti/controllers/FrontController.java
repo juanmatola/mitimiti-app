@@ -37,9 +37,7 @@ public class FrontController extends BaseUserController {
 											 @RequestParam("email") Optional<String> mail){
 		
 		try {
-
 			usuarioService.createNewUsuario(username, password, password2, mail);
-			
 			this.sendService.sayHello(username , mail);
 			
 		} catch (Exception e) {
@@ -52,7 +50,7 @@ public class FrontController extends BaseUserController {
 	@Override
 	public String errorHandle(Exception e) {
 		
-		return "/?err=".concat(e.getMessage());
+		return "redirect:/".concat("?err=").concat(e.getMessage());
 
 	}
 }
