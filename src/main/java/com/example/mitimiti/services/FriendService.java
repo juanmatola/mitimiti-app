@@ -40,6 +40,8 @@ public class FriendService {
 								String nombre, 
 								String email) throws Exception{
 		
+		if( nombre.length() == 0 ) throw new Exception("El nombre de amigo no puede estar vacio");
+		
 		Friend friend = this.getFriendById(id);
 		
 		friend.setMail(email);
