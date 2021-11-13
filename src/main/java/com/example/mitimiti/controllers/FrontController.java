@@ -50,7 +50,7 @@ public class FrontController extends BaseUserController {
 	@Override
 	public String errorHandle(Exception e) {
 		
-		return "redirect:/".concat("?err=").concat(e.getMessage());
+		return RedirectTo.HOME.concat("?err=").concat(e.getMessage());
 
 	}
 }
