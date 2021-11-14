@@ -17,15 +17,10 @@
 
 	<main class="container page-margins">
 
-
-		<!--tabla para agregar gastos, elementos y asignar amigo-->
-
 		<div class="ps-3 py-3 bg-personalizado border-dark card text-center">
 			<h1 class="">RESUMEN</h1>
 			<h2><span th:text="${nombreEvento}" class="small"></span></h2>
 		</div>
-
-		
 
 		<div class="col bg-personalizado border-dark card pb-4 mt-5 py-2">
 
@@ -42,39 +37,44 @@
 						</tr>
 					</thead>
 					<tbody>
-					
+
 						<tr th:each="entry, stats : ${resume}">
 							<td th:text="${entry.key.name}"></td>
 							<td th:text="${entry.value.consumption}"></td>
 							<td th:text="${entry.value.contribution}"></td>
-							<td th:class="${entry.value.balance >= 0 ? 'text-success' : 'text-danger'}" th:text="${entry.value.balance}"></td>
+							<td th:class="${entry.value.balance >= 0 ? 'text-success' : 'text-danger'}"
+								th:text="${entry.value.balance}"></td>
 						</tr>
 					</tbody>
 
 				</table>
 			</div>
 
-			<div class="container col-6 py-4">
-				<div class="row"> 
-					<div class="col-4 px-3"></div>
+			<div class="container py-4">
+				<div class="row align-items-center">
+
+					<div class="col-4 pt-2 text-star">
+						<a href="/user/evento" class="btn btn-warning "><i class="fas fa-chevron-left"></i> Volver</a>
+					</div>
+
+					<div class="col-4 px-3 text-center">
+						<a href="/user/evento/resumen/send" class="btn btn-success text-light" id="sendResumeButton"> Enviar resumen </a>
+						<button class="btn btn-success d-none" type="button" disabled id="sendLoadder">
+						  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+						  Enviando...
+						</button>
+					</div>
+					<div class="col-4 px-3 text-end">
 						<a href="/user/evento/delete" class="btn btn-danger text-light"> Finalizar evento</a>
 					</div>
+
 				</div>
 			</div>
-			
-			<div class="col-6 pt-2" ></div>
-					<a href="/user/evento" class="btn btn-warning "><i class="fas fa-chevron-left"></i> Volver</a>
-			</div>
-		
-			<div class="separator"></div>
 
 		</div>
 	</main>
 
-
 	<footer class="fixed-bottom" th:insert="../fragments/components.html::pie"></footer>
-
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -82,6 +82,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+
+		<script src="/js/sendReaction.js"></script>
 </body>
 
 </html>

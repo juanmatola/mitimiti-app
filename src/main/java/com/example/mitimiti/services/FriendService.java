@@ -19,6 +19,8 @@ public class FriendService {
 	public void createNewFriend(String mail, 
 								String name, 
 								Usuario usuario) throws Exception{
+		
+		if( name.length() == 0 ) throw new Exception("El nombre de amigo no puede estar vacio");
 	
 		Friend friend = new Friend();
 		friend.setMail(mail);
@@ -37,6 +39,8 @@ public class FriendService {
 	public void updateFriend(	String id,
 								String nombre, 
 								String email) throws Exception{
+		
+		if( nombre.length() == 0 ) throw new Exception("El nombre de amigo no puede estar vacio");
 		
 		Friend friend = this.getFriendById(id);
 		

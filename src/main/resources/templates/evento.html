@@ -1,184 +1,211 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/EstiloIndex2.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/108daf0d0a.js" crossorigin="anonymous"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evento</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/EstiloIndex2.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/108daf0d0a.js" crossorigin="anonymous"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Evento</title>
 </head>
+
 <body>
-    <nav th:insert="../fragments/components.html::menu"></nav>
+	<nav th:insert="../fragments/components.html::menu"></nav>
 
-    <main class="container page-margins">
-        
-  
-        <!--tabla para agregar gastos, elementos y asignar amigo-->
-
-        <div class="py-1 my-5 bg-personalizado border-dark card text-center  ">
-            <h2 class="text-center"><span th:text="${nombreEvento}" class="small"></span></h2>
-        </div>
-
-        <div class="row g-0">
-    
-            <div class="col pe-4 ">
-                <div class="bg-personalizado border-dark card">
-                <img src="/img/Gastos.png" class="card-img-top imgtar" alt="...">
-                <div class="card-body text-center">
-                    <h5 class="card-title">CREAR GASTO</h5>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalGasto">
-                        AÑADIR GASTO
-                    </button>
-                </div>
-                </div>
-            </div>
-        
-            <div class="col-8 bg-personalizado border-dark card py-2">
-            
-                <h2 class="text-center">GASTOS</h2>
-        
-                <table class="table">
-        
-                    <thead>
-                        <tr>
-                            <th> DESCRIPCIÓN </th>
-                            <th> PRECIO </th>
-                            <th> AMIGO QUE PAGÓ </th>
-                            <th> ACCIÓN</th>
-                        </tr>
-        
-                    </thead>
-                    <tbody>
-                        <tr th:each="gasto : ${listagastos}">
-                            <th th:text="${gasto.detail}"></th>
-                            <td th:text="${gasto.amount}"></td>
-                            <td th:text="${gasto.buyer.name}"></td>
-                            <td>
-                                <a th:href="@{/user/evento/gasto/delete/{id}(id=${gasto.id})}"><i class="fas fa-trash-alt"></i></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
-                    
-        
-                </table>
-                
-            </div>
-    
-            
-        </div>
-        
-        <div class="my-5 text-center">
-            <a href="/user/evento/resumen" class="btn btn-success px-3 px-md-5" style="color: white !important;">Calcular</a>
-        </div>
-
-        <div class="separator"></div>
-
-    </main>
+	<main class="container page-margins">
 
 
-    <footer class="fixed-bottom" th:insert="../fragments/components.html::pie"></footer>
+		<!--tabla para agregar gastos, elementos y asignar amigo-->
 
-    <div class="modal fade" id="ModalGasto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="py-1 my-5 bg-personalizado border-dark card text-center  ">
+			<h2 class="text-center"><span th:text="${nombreEvento}" class="small"></span></h2>
+		</div>
 
-            <div class="modal-content">
+		<div class="row g-0">
 
-                <div class="modal-header px-4">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear Gasto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+			<div class="col pe-4 ">
+				<div class="bg-personalizado border-dark card">
+					<img src="/img/Gastos.png" class="card-img-top imgtar" alt="...">
+					<div class="card-body text-center">
+						<h5 class="card-title">CREAR GASTO</h5>
+						<button type="button" class="btn btn-warning" data-bs-toggle="modal"
+							data-bs-target="#ModalGasto">
+							AÑADIR GASTO
+						</button>
+					</div>
+				</div>
+			</div>
 
-                <div class="modal-body px-4">
+			<div class="col-8 bg-personalizado border-dark card py-2">
 
-                    <form class="row g-3" id="FormularioGasto" action="/user/evento/gasto" method="POST">
+				<h2 class="text-center">GASTOS</h2>
 
-                        <div class="col-md-6">
-                            <label for="validationName" class="form-label">Descripción</label>
-                            <input type="text" class="form-control" name="desc" required></input>
-                        </div>
+				<table class="table">
 
-                        <div class="col-md-6">        
-                            <label for="validationName" class="form-label">Precio</label>
-                            <input type="number" class="form-control" name="monto" required></input>
-                        </div> 
+					<thead>
+						<tr>
+							<th> DESCRIPCIÓN </th>
+							<th> PRECIO </th>
+							<th> AMIGO QUE PAGÓ </th>
+							<th class="text-center"> ACCIÓN</th>
+						</tr>
 
-                        <div class="col-12">
-                            <label for="validationName" class="form-label">Amigo que pagó: </label>
-                            <select name="comprador">
-                                <div th:each="amigo : ${amigos}">
-                                    <option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}" required></option>
-                                </div>
-                            </select>
-                        </div>
+					</thead>
+					<tbody>
+						<tr th:each="gasto : ${listagastos}">
+							<th th:text="${gasto.detail}"></th>
+							<td th:text="${gasto.amount}"></td>
+							<td th:text="${gasto.buyer.name}"></td>
+							<td class="text-center">
+								<a th:href="@{/user/evento/gasto/delete/{id}(id=${gasto.id})}"><i
+										class="fas fa-trash-alt"></i></i></a>
+							</td>
+						</tr>
+					</tbody>
 
-                        <div class="mx-auto pb-3">
-                            <label class="form-label">Marcá el amigo que lo consumió</label>
-    
-                            <ul class="list-group">
-                                <li class="list-group-item"  th:each="Amigo : ${amigos}">
-                                    <input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}" aria-label="..." name="participantes[]">
-                                    <span th:text="${Amigo.name}"></span>
-                                </li>
-                            </ul>
-                        </div>
 
-                    </form>
+				</table>
 
-                </div>
+			</div>
 
-                <div class="modal-footer px-4">
+
+		</div>
+
+
+
+		<div class="container py-4">
+			<div class="row">
+				<div class="col-6 pt-2 text-star">
+				<a href="/user" class="btn btn-warning "><i class="fas fa-chevron-left"></i> Volver</a>
+					
+
+
+				</div>
+
+				<div class="col-6 pt-2 text-end">
+				<a href="/user/evento/resumen" class="btn btn-success px-3 px-md-5"
+						style="color: white !important;">Calcular</a>
+				
+			</div>
+		</div>
+		</div>
+		
+		<div class="separator"></div>
+
+	</main>
+
+
+	<footer class="fixed-bottom" th:insert="../fragments/components.html::pie"></footer>
+
+	<div class="modal fade" id="ModalGasto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+
+			<div class="modal-content">
+
+				<div class="modal-header px-4">
+					<h5 class="modal-title" id="exampleModalLabel">Crear Gasto</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<div class="modal-body px-4">
+
+					<form class="row g-3" id="FormularioGasto" action="/user/evento/gasto" method="POST">
+
+						<div class="col-md-6">
+							<label for="validationName" class="form-label">Descripción</label>
+							<input type="text" class="form-control" name="desc" required></input>
+						</div>
+
+						<div class="col-md-6">
+							<label for="validationName" class="form-label">Precio</label>
+							<input type="number" class="form-control" name="monto" required></input>
+						</div>
+
+						<div class="col-12">
+							<label for="validationName" class="form-label">Amigo que pagó: </label>
+							<select name="comprador">
+								<div th:each="amigo : ${amigos}">
+									<option th:text="${amigo.name}" class="form-control" th:value="${amigo.id}"
+										required></option>
+								</div>
+							</select>
+						</div>
+
+						<div class="mx-auto pb-3">
+							<label class="form-label">Marcá el amigo que lo consumió</label>
+
+							<ul class="list-group">
+								<li class="list-group-item" th:each="Amigo : ${amigos}">
+									<input class="form-check-input me-5" type="checkbox" th:value="${Amigo.id}"
+										aria-label="..." name="participantes[]">
+									<span th:text="${Amigo.name}"></span>
+								</li>
+							</ul>
+						</div>
+
+					</form>
+
+				</div>
+
+				<div class="modal-footer px-4">
 					<div class="row w-100">
 						<div class="col-12 col-md-6">
-                            <button type="button" class="btn btn-secondary col-md-12 text-center" data-bs-dismiss="modal">Cerrar</button>
+							<button type="button" class="btn btn-secondary col-md-12 text-center"
+								data-bs-dismiss="modal">Cerrar</button>
 						</div>
 						<div class="col-12 col-md-6">
-                            <button type="submit" class="btn btn-warning col-md-12 text-center" form="FormularioGasto">Añadir</button>
+							<button type="submit" class="btn btn-warning col-md-12 text-center"
+								form="FormularioGasto">Añadir</button>
 						</div>
-					</div>		                    
-                </div>   
+					</div>
+				</div>
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-    </div>
+	</div>
 
-    <!-- Modal de Error -->
+	<!-- Modal de Error -->
 	<div class="modal fade" tabindex="-1" id="ErrorModal">
 		<div class="modal-dialog">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h5 class="modal-title">Ups..</h5>
-			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<div class="modal-body d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;">
-			
-				<svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="100" height="100" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
-				  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-				  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
-				</svg>
-				
-				<div class="my-4">
-					<p class="fw-bolder" id="ErrorModalMesagge"> aca se muestra un mensaje de error</p>
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Ups..</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-			  
+				<div class="modal-body d-flex flex-column align-items-center justify-content-center"
+					style="min-height: 200px;">
+
+					<svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="100" height="100"
+						fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+						<path
+							d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+					</svg>
+
+					<div class="my-4">
+						<p class="fw-bolder" id="ErrorModalMesagge"> aca se muestra un mensaje de error</p>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
 			</div>
-			<div class="modal-footer">
-			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			</div>
-		  </div>
 		</div>
 	</div>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-	<script src="/js/errorHandler.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+	<script type="module" src="/js/errorHandler.js"></script>
 </body>
+
 </html>

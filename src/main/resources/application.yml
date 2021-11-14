@@ -1,4 +1,15 @@
 spring:
+  mail: 
+    host: smtp.gmail.com
+    port: 587
+    username: mitimiti.app@gmail.com
+    password: Mitimiti1234
+    properties:
+        mail:
+            smtp:              
+                auth: true
+                starttls:
+                    enable: true
   datasource: 
     url: jdbc:mysql://localhost:3306/mitmitbd_persistida?createDatabaseIfNotExist=true
     username: root
@@ -12,7 +23,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect      
   thymeleaf:
-    cache: false 
+    cache: false
 server:
   port: 8080
   error:
@@ -24,3 +35,4 @@ server:
         http-only: true
       tracking-modes:
       - cookie
+
