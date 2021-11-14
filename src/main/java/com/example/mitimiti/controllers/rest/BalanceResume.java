@@ -1,6 +1,7 @@
 package com.example.mitimiti.controllers.rest;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +20,10 @@ public class BalanceResume extends BaseUserController{
 	private EventService eventService;
 	
 	@RequestMapping("/user/evento/resumen/resume")
-	public HashMap<Participant, HashMap<String, Double>> index(){
+	public HashMap<String, Double> index(){
 		
 		HashMap<Participant, HashMap<String, Double>> data = new HashMap<>();
+		HashMap<String, Double> balance = new HashMap<String, Double>();
 		
 		try {
 			
@@ -29,19 +31,29 @@ public class BalanceResume extends BaseUserController{
 			
 			data = this.eventService.calcularCostos(user);
 			
+			balance = this.balanceResume(data);
 			
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
 		
-		return data;
+		return balance;
 		
 	}
 	
 	public HashMap<String, Double> balanceResume(HashMap<Participant, HashMap<String, Double>> incommingData){
 		
+		HashMap<String, Double> balance = new HashMap<String, Double>();
 		
-		return null;
+		for (Map.Entry<Participant, HashMap<String, Double>> entry : incommingData.entrySet()) {
+			Participant participant = entry.getKey();
+			HashMap<String, Double> resume = entry.getValue();
+			
+			balance.put(participant.getName(), resume.get("balance"));
+
+		}
+		
+		return balance;
 	}
 
 	@Override
