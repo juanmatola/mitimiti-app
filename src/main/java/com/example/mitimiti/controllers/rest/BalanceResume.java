@@ -19,7 +19,7 @@ public class BalanceResume extends BaseUserController{
 	@Autowired
 	private EventService eventService;
 	
-	@RequestMapping("/user/evento/resumen/resume")
+	@RequestMapping("/user/evento/resumen/json")
 	public HashMap<String, Double> index(){
 		
 		HashMap<Participant, HashMap<String, Double>> data = new HashMap<>();
