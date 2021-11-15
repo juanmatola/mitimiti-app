@@ -1,3 +1,5 @@
+import errorHandler from './errorHandler.js';
+
 let url = new URL(document.URL);
 
 if (!(url.search === '')) {
@@ -10,3 +12,5 @@ if (!(url.search === '')) {
       singUpModal.show();
   }
 }
+
+errorHandler();

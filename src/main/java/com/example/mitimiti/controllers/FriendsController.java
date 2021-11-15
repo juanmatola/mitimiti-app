@@ -34,7 +34,7 @@ public class FriendsController extends BaseUserController {
 			friendService.createNewFriend(mail, name, usuario);
 						
 		} catch (Exception e) {
-			return RedirectTo.LOGIN;
+			return this.errorHandle(e);
 		}
 		
 		return RedirectTo.PANEL;

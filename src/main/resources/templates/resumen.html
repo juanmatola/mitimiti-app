@@ -8,6 +8,7 @@
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/108daf0d0a.js" crossorigin="anonymous"></script>
 	<title>Resumen</title>
 </head>
 
@@ -16,57 +17,70 @@
 
 	<main class="container page-margins">
 
-
-		<!--tabla para agregar gastos, elementos y asignar amigo-->
-
-		<div class="ps-3 py-5">
-			<h1>Resumen</h1>
-			<h2>Evento: <span th:text="${nombreEvento}" class="small"></span></h2>
+		<div class="ps-3 py-3 bg-personalizado border-dark card text-center">
+			<h1 class="">RESUMEN</h1>
+			<h2><span th:text="${nombreEvento}" class="small"></span></h2>
 		</div>
 
-		<div class="col">
+		<div class="col bg-personalizado border-dark card pb-4 mt-5 py-2">
 
 			<div class="col px-3 text-start">
-
-
 
 				<table class="table">
 
 					<thead>
 						<tr>
 							<th> AMIGO </th>
-							<th> CONSUMIO </th>
+							<th> CONSUMIÓ </th>
 							<th> PAGÓ </th>
-							<th> SALDO</th>
+							<th class="text-center"> <span class="text-success">RECIBE</span> / <span class="text-danger">PAGA</span></th>
 						</tr>
 					</thead>
 					<tbody>
-					
+
 						<tr th:each="entry, stats : ${resume}">
 							<td th:text="${entry.key.name}"></td>
 							<td th:text="${entry.value.consumption}"></td>
 							<td th:text="${entry.value.contribution}"></td>
-							<td th:text="${entry.value.balance}"></td>
+							<td th:class="${entry.value.balance >= 0 ? 'text-success text-center' : 'text-danger text-center'}"
+								th:text="${entry.value.balance}"></td>
 						</tr>
 					</tbody>
 
 				</table>
 			</div>
 
+			<div class="container py-4">
+				<div class="row align-items-center">
 
+					<div class="col-4 pt-2 text-star">
+						<a href="/user/evento" class="btn btn-warning "><i class="fas fa-chevron-left"></i> Volver</a>
+					</div>
 
-			<div class="my-5 text-center">
-				<a href="/user/evento/delete" class="btn btn-danger px-3 px-md-5">Finalizar evento</a>
+					<div class="col-4 px-3 text-center">
+						<a href="/user/evento/resumen/send" class="btn btn-success text-light" id="sendResumeButton"> Enviar resumen </a>
+						<button class="btn btn-success d-none" type="button" disabled id="sendLoadder">
+						  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+						  Enviando...
+						</button>
+					</div>
+					<div class="col-4 px-3 text-end">
+						<a href="/user/evento/delete" class="btn btn-danger text-light"> Finalizar evento</a>
+					</div>
+
+				</div>
 			</div>
 
-			<div class="separator"></div>
+		</div>
 
+		<div class="my-4 p-4 bg-personalizado">
+			<canvas id="balance"></canvas>
+		</div>
+
+		<div class="separator"></div>
 	</main>
 
-
-	<footer th:insert="../fragments/components.html::pie"></footer>
-
-
+	<footer class="fixed-bottom" th:insert="../fragments/components.html::pie"></footer>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -74,6 +88,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-</body>
 
+		<script src="/js/sendReaction.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+		<script src="/js/resumeGraph.js" type="module"></script>
+</body>
 </html>
