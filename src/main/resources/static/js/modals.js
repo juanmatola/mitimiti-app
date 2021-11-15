@@ -1,4 +1,4 @@
-import errorHandler from './errorHandler.js';
+import errorHandler from './modules/errorHandlerFunction.js';
 
 let url = new URL(document.URL);
 
@@ -13,4 +13,4 @@ if (!(url.search === '')) {
   }
 }
 
-errorHandler();
+errorHandler(url);
