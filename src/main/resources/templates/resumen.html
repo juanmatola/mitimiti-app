@@ -31,9 +31,9 @@
 					<thead>
 						<tr>
 							<th> AMIGO </th>
-							<th> CONSUMIO </th>
+							<th> CONSUMIÓ </th>
 							<th> PAGÓ </th>
-							<th> SALDO</th>
+							<th class="text-center"> <span class="text-success">RECIBE</span> / <span class="text-danger">PAGA</span></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -42,7 +42,7 @@
 							<td th:text="${entry.key.name}"></td>
 							<td th:text="${entry.value.consumption}"></td>
 							<td th:text="${entry.value.contribution}"></td>
-							<td th:class="${entry.value.balance >= 0 ? 'text-success' : 'text-danger'}"
+							<td th:class="${entry.value.balance >= 0 ? 'text-success text-center' : 'text-danger text-center'}"
 								th:text="${entry.value.balance}"></td>
 						</tr>
 					</tbody>
