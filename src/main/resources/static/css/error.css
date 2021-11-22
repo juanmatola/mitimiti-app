@@ -1,0 +1,25 @@
+.error_container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.error_container > div{
+	text-align:center;
+    padding: 50px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.error_container > div > a{
+	color: white !important;
+    border: .5px solid #f32121;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #da2424;
+    text-decoration: none;
+}
+.error_container > div > a:hover{
+	background-color: #b92323ed;
+}

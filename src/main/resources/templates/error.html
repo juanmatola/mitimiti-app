@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="@{Error {code} Page (code=${code})}"></title>
+    <link rel="stylesheet" href="/css/EstiloIndex2.css">
+    <link rel="stylesheet" href="/css/error.css">
+</head>
+<body>
+    
+    <main class="error_container">
+
+        <div class="bg-personalizado">
+            
+            <h1 th:text="${code}"></h1>
+            <h3 th:text="${message}"></h3>
+            <br><br>
+            <a href="/" class="btn btn-warning">Regresar</a>
+
+        </div>
+
+    </main>
+    
+</body>
+</html>
