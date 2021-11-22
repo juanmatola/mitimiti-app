@@ -6,6 +6,8 @@
 	<link rel="stylesheet" href="/css/EstiloIndex2.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<script src="https://kit.fontawesome.com/108daf0d0a.js" crossorigin="anonymous"></script>
 	<title>INICIO</title>
 </head>
 
@@ -64,7 +66,7 @@
 		</button>
 	</div>
 
-	<section class="my-5 text-center" >
+	<section class="my-5 text-center">
 		<h2> SOBRE LA WEB-APP </h2>
 
 		<p> Esta aplicacion fue pensada y realizada completamente en 60hs. creamos esta web-app pensando en facilitar
@@ -87,7 +89,8 @@
 			Juan Manuel Tola, Maria Anahi Davila, Matias Corvezola, Rodrigo Bistagnino, Valentin Molina. </p>
 		<p> Comenzamos este curso en el mes de Mayo. Aprendiendo programacion desde 0, trabajando en equipo y mucha
 			dedicacion.</p>
-		<p> Esta es nuestra entrega del proyecto final.<p>
+		<p> Esta es nuestra entrega del proyecto final.
+		<p>
 
 	</section>
 
@@ -108,9 +111,9 @@
 							</h2>
 							<div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
 								<div class="accordion-body">
-									<p>	El algoritmo esta desarrollado para dividir de manera justa y sencilla.
+									<p> El algoritmo esta desarrollado para dividir de manera justa y sencilla.
 										Toma cada gasto y lo divide entre los participantes que lo consumieron.
-										realiza una cuenta personal para cada amigo.
+										Realiza una cuenta personal para cada amigo.
 										En el resumen final muestra cuanto dinero tienen que aportar o recibir.
 									</p>
 
@@ -121,15 +124,15 @@
 							<h2 class="accordion-header">
 								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
 									data-bs-target="#faq-content-2">
-									Porque nos pide un mail para cada participante?
+									Por qué nos pide un mail para cada participante?
 								</button>
 							</h2>
 							<div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
 								<div class="accordion-body">
-									It is a long established fact that a reader will be distracted by the readable
-									content of a page when looking at its layout. The point of using Lorem Ipsum is that
-									it has a more-or-less normal distribution of letters, as opposed to using 'Content
-									here.
+									El mail lo utilizamos para identificar a los participantes en
+									caso de que algún nombre o apodo se repita, para evitar confusiones,
+									al momento de asignar los montos. Luego mandamos a cada participantes
+									un mail con el resumen del evento.
 								</div>
 							</div>
 						</div>
@@ -167,9 +170,11 @@
 							</h2>
 							<div id="faqlist2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
 								<div class="accordion-body">
-									<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-									exercitation ullamco laboris nisi ut.</p>
+									Tené en cuenta estos items para poder registrarte exitosamente:
+									1. Tu nombre tiene que tener entre 4 y 16 caracteres.
+									2. Tu contraseña tiene que tener entre 8 y 16 caracteres.
+									3. La contraseña tiene que tener al menos, una mayúscula, un numero y una minúscula.
+									4. La contraseña y el nombre no pueden tener espacios.
 								</div>
 							</div>
 						</div>
@@ -232,19 +237,19 @@
 
 					<form class="row g-3" id="FormularioRegistro" action="/sing-up" method="POST">
 
-							<div class="col-md-4">
-								<label for="validationName" class="form-label">Nombre de usuario</label>
-								<input type="text" class="form-control" name="username" required ></input>
+						<div class="col-md-4">
+							<label for="validationName" class="form-label">Nombre de usuario</label>
+							<input type="text" class="form-control" name="username" required></input>
 
-								<label for="validationName" class="form-label">Email</label>
-								<input type="email" class="form-control" name="email" required ></input>
+							<label for="validationName" class="form-label">Email</label>
+							<input type="email" class="form-control" name="email" required></input>
 
-								<label for="validationName" class="form-label">Contraseña</label>
-								<input type="password" class="form-control" name="password" required></input>
+							<label for="validationName" class="form-label">Contraseña</label>
+							<input type="password" class="form-control" name="password" required></input>
 
-								<label for="validationName" class="form-label">Repite la contraseña</label>
-								<input type="password" class="form-control" name="password2" required></input>
-							</div>
+							<label for="validationName" class="form-label">Repite la contraseña</label>
+							<input type="password" class="form-control" name="password2" required></input>
+						</div>
 					</form>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
