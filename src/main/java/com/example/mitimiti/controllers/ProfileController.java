@@ -79,7 +79,7 @@ public class ProfileController extends BaseUserController {
 			return this.errorHandle(e);
 		}
 		
-		return RedirectTo.HOME;
+		return RedirectTo.SING_UP;
 	}
 	
 	@Override
