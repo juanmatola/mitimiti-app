@@ -5,12 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.example.mitimiti.entities.superclass.Person;
 
 @Entity
 @Table(name="friend")
 public class Friend extends Person {
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
     public Friend() {
