@@ -46,6 +46,23 @@ public class FrontController extends BaseUserController {
 		
 		return RedirectTo.LOGIN;
 	}
+	
+	@PostMapping("/password-reset")
+	public String passwordReset(@RequestParam("username") String username) {
+		
+		
+		try {
+
+			this.usuarioService.resetPassword(username);
+			
+		} catch (Exception e) {
+			
+			System.err.println(e.getMessage());
+			
+		}
+
+		return RedirectTo.LOGIN;
+	}
 
 	@Override
 	public String errorHandle(Exception e) {

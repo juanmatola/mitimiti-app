@@ -198,6 +198,7 @@
 
 	<footer th:insert="../fragments/components.html::pie"></footer>
 
+	<!-- Login Modal -->
 	<div class="modal fade " id="ModalInicio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content ">
@@ -217,6 +218,8 @@
 
 							<label for="validationName" class="form-label">Contraseña</label>
 							<input type="password" class="form-control" name="password" required></input>
+
+							<p class="light-color">¿Olvidaste tu contraseña? <a href="/sing-up" data-bs-toggle="modal" data-bs-target="#ResetPasswordModal"> Recuperar</a></p>
 						</div>
 
 					</form>
@@ -238,6 +241,44 @@
 		</div>
 	</div>
 
+
+	<!-- Reset Password Modal -->
+	<div class="modal fade" tabindex="-1" id="ResetPasswordModal">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title dark-color">Recuperar contraseña</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			                
+                <form action="/password-reset" method="post" id="ResetPasswordForm">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Tu nombre de usuario:</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                </form>
+				
+                <div>
+                    <p class="text-muted small">Si tu nombre usuario pertenece a un usuario activo, te enviaremos un email con las instrucciones para restablecer tu contraseña.</p>
+                </div>
+			  
+			</div>
+			<div class="modal-footer">
+				<div class="row justify-content-center w-100">
+					<div class="col-6 col-md-6">
+						<button type="button" class="btn btn-secondary text-center w-100" data-bs-toggle="modal" data-bs-target="#ModalInicio"> Volver </button>
+					</div>
+					<div class="col-6 col-md-6">
+						<button type="submit" class="btn btn-warning text-center w-100" form="ResetPasswordForm"> Recuperar mi contraseña </button>
+					</div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+
+	<!-- Sing Up Modal -->
 	<div class="modal fade " id="ModalRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">

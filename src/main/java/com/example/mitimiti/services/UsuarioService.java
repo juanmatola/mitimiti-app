@@ -25,12 +25,15 @@ import com.example.mitimiti.entities.Usuario;
 import com.example.mitimiti.repository.UsuarioRepository;
 import com.example.mitimiti.util.ValidationUtils;
 import com.example.mitimiti.util.exceptions.SingUpException;
+import com.example.mitimiti.util.RandomPasswordGenerator;
  
 @Service
 public class UsuarioService implements UserDetailsService {
  
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private SendService sendService;
      
  	@Override
  	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
@@ -103,6 +106,22 @@ public class UsuarioService implements UserDetailsService {
  		usuario.setPassword(new BCryptPasswordEncoder().encode(newPassword));
  		usuarioRepository.save(usuario);
 	}
+ 	
+
+	public void resetPassword(String username) throws Exception {
+		
+		Usuario user = this.findByName(username);
+		
+		RandomPasswordGenerator pwGenerator = new RandomPasswordGenerator();
+		String newPassword = pwGenerator.generate();
+		
+		user.setPassword(new BCryptPasswordEncoder().encode(newPassword));
+		
+		this.usuarioRepository.save(user);
+		
+		this.sendService.sendNewPassword(newPassword, user);
+		
+	}
 
  	private static void validate(String name, String password, String password_2, String mail) throws SingUpException {
  		if(!ValidationUtils.validateUsername(name)) {
@@ -136,5 +155,6 @@ public class UsuarioService implements UserDetailsService {
 		}
  		
  	}
+
 
 }

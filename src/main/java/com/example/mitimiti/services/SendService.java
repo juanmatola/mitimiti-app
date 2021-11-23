@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.example.mitimiti.entities.Participant;
+import com.example.mitimiti.entities.Usuario;
 
 @Service
 public class SendService {
@@ -70,6 +71,30 @@ public class SendService {
 			javaMailSender.send(email);
 			
 		}
+		
+	}
+
+	@Async
+	public void sendNewPassword(String newPassword, Usuario user) {
+
+		SimpleMailMessage email = new SimpleMailMessage();
+		String mensaje = 	"Hola ".concat(user.getName()).concat("! ¿Olvidaste tu contraseña? No hay problema!\r\n"
+							+ "\r\n"
+							+ "Generamos una contraseña provisoria para que puedas ingresar a tu cuenta.\r\n"
+							+ "\r\n"
+							+ "Puedes loggearte a tu cuenta con: \n"
+							+ "-----------------------------------------------------------\n"
+							+ "USERNNAME: ".concat(user.getName())
+							+ "\nPASSWORD: ".concat(newPassword) +"\r\n"
+							+ "-----------------------------------------------------------\n"
+							+ "Luego ve a tu perfil y actualizala con la contraseña que prefieras !.\n\n MITI-MITI");
+		
+		email.setTo(user.getMail());
+		email.setFrom("mitimiti.app@gmail.com");
+		email.setSubject("Recuperar contraseña de tu cuenta (MITI-MITI)");
+		email.setText(mensaje);
+		
+		javaMailSender.send(email);
 		
 	}
 }
