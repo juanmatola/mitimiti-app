@@ -1,10 +1,13 @@
 package com.example.mitimiti.controllers;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mitimiti.config.RedirectTo;
 import com.example.mitimiti.config.ViewNames;
@@ -40,6 +43,28 @@ public class ProfileController extends BaseUserController {
 		
 		return ViewNames.PROFILE;
 	}
+	
+	@PostMapping("/change-password")
+	public String changePassword( 	@RequestParam("currentPassword") String currentPassword,
+									@RequestParam("newPassword") String newPassword,
+									@RequestParam("newPassword2") String newPassword2) {
+		
+		
+		try {
+			
+			this.usuarioService.changePassword(currentPassword, newPassword, newPassword2);
+			
+		} catch (Exception e) {
+			
+			return this.errorHandle(e);
+			
+		}
+		
+		
+		
+		return RedirectTo.PROFILE;
+	}
+	
 	
 	@GetMapping("/delete-account")
 	public String deleteAccount() {

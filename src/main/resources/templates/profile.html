@@ -19,6 +19,26 @@
 		</div>
 
         <div class="row bg-personalizado">
+
+            <div class="col-12">
+                <form action="/user/profile/change-password"  class="row px-4 pt-3"  method="post">
+                    <div class="mb-3 col-12">
+                        <h5>Cambiar contraseña</h5>
+                    </div>
+                    <div class="mb-3 col-12">
+                        <input class="form-control" type="password" name="currentPassword" placeholder="Contraseña actual">
+                    </div>
+                    <div class="mb-3 col-12 col-md-6">
+                        <input class="form-control" type="password" name="newPassword" placeholder="Nueva contraseña">
+                    </div>
+                    <div class="mb-3 col-12 col-md-6">
+                        <input class="form-control" type="password" name="newPassword2" placeholder="Repite tu nueva contraseña">
+                    </div>
+                    <div class="mb-3 col-12 text-end">
+                        <button type="submit" class="btn btn-success">Cambiar</button>
+                    </div>
+                </form>
+            </div>
             
             <div class="col-12 text-center my-4">
                 <button  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Eliminar mi cuenta</button>
